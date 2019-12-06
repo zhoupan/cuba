@@ -1,0 +1,133 @@
+//noinspection ALL
+@mixin flat-base-cuba-groupbox($primary-stylename: c-groupbox) {
+
+  .#{$primary-stylename} {
+    --padding: 20px;
+    --padding-ligth: 10px;
+    --expander-padding: 15px;
+    --expander-width: 20px;
+    --expander-font-size: 20px;
+    --caption-height: 48px;
+    --collapsed-color: #F2F2F2;
+
+    border: 1px solid var(--focus-color);
+  }
+
+  .#{$primary-stylename}.collapsed {
+    background-color: var(--collapsed-color);
+    border-color: var(--collapsed-color);
+
+    .#{$primary-stylename}-expander {
+      color: var(--green-one);
+    }
+  }
+
+  .#{$primary-stylename}-content {
+    border: 0;
+    padding: 0 var(--padding) var(--padding) 0;
+    padding-left: 50px; // calc(var(--expander-padding) + var(--expander-width) + var(--expander-padding));
+  }
+
+  .#{$primary-stylename}-nocollapsable {
+    .#{$primary-stylename}-caption {
+      padding-left: var(--padding);
+
+      .#{$primary-stylename}-caption-text {
+        //font-weight: bold;
+      }
+    }
+
+    .#{$primary-stylename}-content {
+      padding-left: var(--padding);
+    }
+  }
+
+  .#{$primary-stylename}-caption-start-deco,
+  .#{$primary-stylename}-caption-end-deco {
+    display: none;
+  }
+
+  .#{$primary-stylename}-captionwrap,
+  .#{$primary-stylename}-caption {
+    height: var(--caption-height);
+  }
+
+  .#{$primary-stylename}-caption {
+    padding: 0 var(--padding) 0 var(--expander-padding);
+    line-height: var(--caption-height);
+    font-size: var(--font-size);
+
+    .#{$primary-stylename}-expander {
+      font-size: var(--expander-font-size);
+      width: var(--expander-width);
+      margin-right: var(--expander-padding);
+    }
+
+    .#{$primary-stylename}-caption-text {
+      font-weight: bold;
+      color: var(--text-color);
+    }
+  }
+
+  .#{$primary-stylename}-expander {
+    &:before {
+      content: "\f13a";
+    }
+  }
+
+  .#{$primary-stylename}-expander.expanded {
+    &:before {
+      content: "\f139";
+    }
+  }
+
+  /*****************************
+   *           light           *
+   *****************************/
+
+  .#{$primary-stylename}-light {
+    border: 0;
+
+    &.collapsed {
+      background-color: transparent;
+
+      .#{$primary-stylename}-caption-end-deco > div {
+        border-color: var(--green-one);
+      }
+    }
+
+    .#{$primary-stylename}-caption {
+      padding: 0 var(--padding-ligth) 0 0;
+    }
+
+    .#{$primary-stylename}-content {
+      padding: 0 0 0 35px; // calc(var(--expander-padding) + var(--expander-width));
+    }
+
+    .#{$primary-stylename}-caption-start-deco,
+    .#{$primary-stylename}-caption-end-deco {
+      display: inline-block;
+      height: var(--caption-height);
+      padding-top: 24px; // TODO: gg, replace
+
+      div {
+        border-top: 2px solid var(--text-color);
+      }
+    }
+
+    // TODO: gg, temporal workaround
+    .#{$primary-stylename}-caption-start-deco {
+      width: 0;
+
+      div {
+        border: 0;
+      }
+    }
+  }
+
+  .#{$primary-stylename}-nocollapsable.#{$primary-stylename}-light {
+    .#{$primary-stylename}-content {
+      padding-left: 0;
+    }
+  }
+}
