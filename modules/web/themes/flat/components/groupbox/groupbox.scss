@@ -8,14 +8,13 @@
     --expander-width: 20px;
     --expander-font-size: 20px;
     --caption-height: 48px;
-    --collapsed-color: #F2F2F2;
 
     border: 1px solid var(--focus-color);
   }
 
   .#{$primary-stylename}.collapsed {
-    background-color: var(--collapsed-color);
-    border-color: var(--collapsed-color);
+    background-color: var(--border-color);
+    border-color: var(--border-color);
 
     .#{$primary-stylename}-expander {
       color: var(--green-one);

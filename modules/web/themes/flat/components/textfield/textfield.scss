@@ -19,4 +19,30 @@
   .#{$primary-stylename}.c-disabled-or-readonly.c-empty-value {
     color: transparent;
   }
+
+  .#{$primary-stylename} {
+    @include box-shadow(none);
+
+    font-size: var(--font-size);
+    font-weight: normal; // TODO: gg, a variable
+    line-height: normal;
+    width: var(--unit-width);
+    height: var(--unit-height);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+
+    &::placeholder {
+      color: var(--second-text-color);
+    }
+
+    &:focus {
+      border-color: var(--focus-color);
+      @include box-shadow(none);
+    }
+  }
+
+  .#{$primary-stylename}-readonly {
+    background: var(--border-color);
+  }
 }
