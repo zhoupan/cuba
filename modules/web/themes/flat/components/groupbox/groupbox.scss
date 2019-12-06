@@ -5,8 +5,6 @@
     --padding: 20px;
     --padding-ligth: 10px;
     --expander-padding: 15px;
-    --padding-with-expander: 50px; // TODO: gg, calculate somehow
-    --padding-with-expander-light: 35px; // TODO: gg, calculate somehow
     --expander-width: 20px;
     --expander-font-size: 20px;
     --caption-height: 48px;
@@ -26,12 +24,17 @@
 
   .#{$primary-stylename}-content {
     border: 0;
-    padding: 0 var(--padding) var(--padding) var(--padding-with-expander);
+    padding: 0 var(--padding) var(--padding) 0;
+    padding-left: 50px; // calc(var(--expander-padding) + var(--expander-width) + var(--expander-padding));
   }
 
   .#{$primary-stylename}-nocollapsable {
     .#{$primary-stylename}-caption {
       padding-left: var(--padding);
+
+      .#{$primary-stylename}-caption-text {
+        //font-weight: bold;
+      }
     }
 
     .#{$primary-stylename}-content {
@@ -98,7 +101,7 @@
     }
 
     .#{$primary-stylename}-content {
-      padding: 0 0 0 var(--padding-with-expander-light);
+      padding: 0 0 0 35px; // calc(var(--expander-padding) + var(--expander-width));
     }
 
     .#{$primary-stylename}-caption-start-deco,

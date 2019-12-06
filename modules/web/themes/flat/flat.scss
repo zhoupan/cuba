@@ -16,11 +16,13 @@
 
 @import "../halo/halo";
 @import "components/groupbox/groupbox";
+@import "components/textfield/textfield";
 
 @mixin flat {
   @include halo;
 
   @include flat-cuba-groupbox;
+  @include flat-cuba-textfield;
 
   --primary-color: #6979F8; // blue-1
   --focus-color: #A5AFFB;   // blue-2
