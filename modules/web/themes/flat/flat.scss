@@ -15,14 +15,18 @@
  */
 
 @import "../halo/halo";
+@import "components/checkbox/checkbox";
 @import "components/groupbox/groupbox";
 @import "components/textfield/textfield";
 
 @mixin flat {
   @include halo;
 
-  @include flat-cuba-groupbox;
-  @include flat-cuba-textfield;
+  @include flat-checkbox;
+  @include flat-groupbox;
+  @include flat-textfield;
+
+  --panel-background-color: #FFFFFF;
 
   --primary-color: #6979F8; // blue-1
   --focus-color: #A5AFFB;   // blue-2

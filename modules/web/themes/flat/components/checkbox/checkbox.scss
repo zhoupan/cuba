@@ -1,0 +1,65 @@
+/*
+ * Copyright (c) 2008-2016 Haulmont.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+@mixin flat-checkbox($primary-stylename: v-checkbox) {
+  .#{$primary-stylename} {
+    --checkbox-height: 24px;
+
+    color: var(--text-color);
+    line-height: var(--checkbox-height);
+    height: var(--checkbox-height);
+
+    :root & {
+      padding-left: 40px;
+    }
+
+    :root & > input {
+      &:checked ~ label:after {
+        color: var(--primary-color);
+      }
+
+      & ~ label:before {
+        @include box-shadow(none);
+
+        background: var(--panel-background-color); // TODO: gg, replace?
+        border-color: var(--border-color);
+        border-radius: var(--border-radius);
+      }
+
+      &:focus ~ label:before {
+        @include box-shadow(none);
+
+        border-color: var(--focus-color);
+        box-shadow: 0 0 6px rgba(105, 121, 248, 0.15);
+      }
+
+      & ~ label:before,
+      & ~ label:after {
+        font-size: var(--font-size);
+        line-height: var(--checkbox-height);
+        height: var(--checkbox-height);
+        width: var(--checkbox-height);
+      }
+    }
+
+    &.v-readonly {
+      :root & > input ~ label:before {
+        background: var(--border-color);
+      }
+    }
+  }
+}

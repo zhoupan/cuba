@@ -1,5 +1,5 @@
 //noinspection ALL
-@mixin flat-cuba-groupbox($primary-stylename: c-groupbox) {
+@mixin flat-groupbox($primary-stylename: c-groupbox) {
 
   .#{$primary-stylename} {
     --padding: 20px;

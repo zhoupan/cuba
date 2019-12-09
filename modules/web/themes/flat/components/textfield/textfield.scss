@@ -15,7 +15,7 @@
  *
  */
 
-@mixin flat-cuba-textfield($primary-stylename: v-textfield) {
+@mixin flat-textfield($primary-stylename: v-textfield) {
   .#{$primary-stylename}.c-disabled-or-readonly.c-empty-value {
     color: transparent;
   }
@@ -37,8 +37,10 @@
     }
 
     &:focus {
-      border-color: var(--focus-color);
       @include box-shadow(none);
+
+      border-color: var(--focus-color);
+      box-shadow: 0 0 6px rgba(105, 121, 248, 0.15);
     }
   }
 
