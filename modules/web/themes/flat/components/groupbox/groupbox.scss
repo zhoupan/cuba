@@ -54,7 +54,7 @@
   .#{$primary-stylename}-caption {
     padding: 0 var(--padding) 0 var(--expander-padding);
     line-height: var(--caption-height);
-    font-size: var(--font-size);
+    //font-size: var(--font-size);
 
     .#{$primary-stylename}-expander {
       font-size: var(--expander-font-size);

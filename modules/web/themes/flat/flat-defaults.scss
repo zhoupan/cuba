@@ -18,12 +18,18 @@
 // Vaadin Valo theme defaults
 
 $v-line-height: 1.35;
+
 $v-font-size: 14px;
+
 $v-caption-font-size: $v-font-size;
 $v-tabsheet-caption-font-size: $v-font-size;
 $v-font-weight: 400;
-$v-unit-size: 30px;
+
+$v-unit-size: 34px;
+
 $v-default-field-width: $v-unit-size * 8;
+
+$v-border-radius: 6px;
 
 $v-font-size--h1: 22px;
 $v-font-size--h2: 18px;

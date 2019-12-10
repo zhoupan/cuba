@@ -37,7 +37,7 @@
 
         background: var(--panel-background-color); // TODO: gg, replace?
         border-color: var(--border-color);
-        border-radius: var(--border-radius);
+        //border-radius: var(--border-radius);
       }
 
       &:focus ~ label:before {
@@ -49,7 +49,7 @@
 
       & ~ label:before,
       & ~ label:after {
-        font-size: var(--font-size);
+        font-size: $v-font-size;
         line-height: var(--checkbox-height);
         height: var(--checkbox-height);
         width: var(--checkbox-height);
