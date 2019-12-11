@@ -17,49 +17,54 @@
 
 @mixin flat-checkbox($primary-stylename: v-checkbox) {
   .#{$primary-stylename} {
-    --checkbox-height: 24px;
+    @include cuba-flat-checkbox-style($checkbox-size: $v-unit-size - 10);
+  }
 
-    color: var(--text-color);
-    line-height: var(--checkbox-height);
-    height: var(--checkbox-height);
+  &.small .#{$primary-stylename} {
+    @include cuba-flat-checkbox-style($checkbox-size: $v-unit-size--small - 10);
+    font-size: $v-font-size--small;
+  }
 
-    :root & {
-      padding-left: 40px;
+  &.large .#{$primary-stylename} {
+    @include cuba-flat-checkbox-style($checkbox-size: $v-unit-size--large - 10);
+    font-size: $v-font-size--large;
+  }
+}
+
+@mixin cuba-flat-checkbox-style($checkbox-size: $v-unit-size) {
+  // Instead of accepting checkbox-size, the valo-checkbox-style mixin divides passed unit-size by 2.
+  // Since we do not want the CheckBox to be half smaller, we need to provide twice the size.
+  @include valo-checkbox-style($unit-size: $checkbox-size * 2);
+
+  color: var(--text-color);
+  height: $checkbox-size;
+
+  :root & {
+    padding-left: round($checkbox-size * 1.66);
+  }
+
+  :root & > input {
+    &:checked ~ label:after {
+      color: var(--primary-color);
     }
 
-    :root & > input {
-      &:checked ~ label:after {
-        color: var(--primary-color);
-      }
+    & ~ label:before {
+      @include box-shadow(0 7px 64px rgba(0, 0, 0, 0.07));
 
-      & ~ label:before {
-        @include box-shadow(none);
-
-        background: var(--panel-background-color); // TODO: gg, replace?
-        border-color: var(--border-color);
-        //border-radius: var(--border-radius);
-      }
-
-      &:focus ~ label:before {
-        @include box-shadow(none);
-
-        border-color: var(--focus-color);
-        box-shadow: 0 0 6px rgba(105, 121, 248, 0.15);
-      }
-
-      & ~ label:before,
-      & ~ label:after {
-        font-size: $v-font-size;
-        line-height: var(--checkbox-height);
-        height: var(--checkbox-height);
-        width: var(--checkbox-height);
-      }
+      background: transparent;
+      border-color: var(--border-color);
     }
 
-    &.v-readonly {
-      :root & > input ~ label:before {
-        background: var(--border-color);
-      }
+    &:focus ~ label:before {
+      @include box-shadow(0 0 6px rgba(105, 121, 248, 0.15));
+
+      border-color: var(--focus-color);
+    }
+  }
+
+  &.v-readonly {
+    :root & > input ~ label:before {
+      background: var(--border-color);
     }
   }
 }

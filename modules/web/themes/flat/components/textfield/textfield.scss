@@ -31,10 +31,9 @@
     }
 
     &:focus {
-      @include box-shadow(none);
+      @include box-shadow(0 0 6px rgba(105, 121, 248, 0.15));
 
       border-color: var(--focus-color);
-      box-shadow: 0 0 6px rgba(105, 121, 248, 0.15);
     }
   }
 
