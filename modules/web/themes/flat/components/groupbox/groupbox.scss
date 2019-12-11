@@ -1,14 +1,13 @@
-//noinspection ALL
+$cuba-groupbox-caption-height: round($v-unit-size * 1.4);
+
 @mixin flat-groupbox($primary-stylename: c-groupbox) {
 
-  .#{$primary-stylename} {
-    --padding: 20px;
-    --padding-ligth: 10px;
-    --expander-padding: 15px;
-    --expander-width: 20px;
-    --expander-font-size: 20px;
-    --caption-height: 48px;
+  $padding: $cuba-groupbox-caption-height / 3;
+  $expander-padding: $cuba-groupbox-caption-height / 3;
+  $expander-size: $cuba-groupbox-caption-height / 3;
+  $expander-font-size: $expander-size;
 
+  .#{$primary-stylename} {
     border: 1px solid var(--focus-color);
   }
 
@@ -23,13 +22,13 @@
 
   .#{$primary-stylename}-content {
     border: 0;
-    padding: 0 var(--padding) var(--padding) 0;
-    padding-left: 50px; // calc(var(--expander-padding) + var(--expander-width) + var(--expander-padding));
+    padding: 0 $padding $padding 0;
+    padding-left: $expander-padding + $expander-size + $expander-padding;
   }
 
   .#{$primary-stylename}-nocollapsable {
     .#{$primary-stylename}-caption {
-      padding-left: var(--padding);
+      padding-left: $padding;
 
       .#{$primary-stylename}-caption-text {
         //font-weight: bold;
@@ -37,7 +36,7 @@
     }
 
     .#{$primary-stylename}-content {
-      padding-left: var(--padding);
+      padding-left: $padding;
     }
   }
 
@@ -48,18 +47,18 @@
 
   .#{$primary-stylename}-captionwrap,
   .#{$primary-stylename}-caption {
-    height: var(--caption-height);
+    height: $cuba-groupbox-caption-height;
   }
 
   .#{$primary-stylename}-caption {
-    padding: 0 var(--padding) 0 var(--expander-padding);
-    line-height: var(--caption-height);
-    //font-size: var(--font-size);
+    padding: 0 $padding 0 $expander-padding;
+    line-height: $cuba-groupbox-caption-height;
+    font-size: $v-font-size;
 
     .#{$primary-stylename}-expander {
-      font-size: var(--expander-font-size);
-      width: var(--expander-width);
-      margin-right: var(--expander-padding);
+      font-size: $expander-font-size;
+      width: $expander-size;
+      margin-right: $expander-padding;
     }
 
     .#{$primary-stylename}-caption-text {
@@ -84,6 +83,8 @@
    *           light           *
    *****************************/
 
+  $padding--light: $padding / 2;
+
   .#{$primary-stylename}-light {
     border: 0;
 
@@ -96,18 +97,18 @@
     }
 
     .#{$primary-stylename}-caption {
-      padding: 0 var(--padding-ligth) 0 0;
+      padding: 0 $padding--light 0 0;
     }
 
     .#{$primary-stylename}-content {
-      padding: 0 0 0 35px; // calc(var(--expander-padding) + var(--expander-width));
+      padding: 0 0 0 $expander-padding + $expander-size;
     }
 
     .#{$primary-stylename}-caption-start-deco,
     .#{$primary-stylename}-caption-end-deco {
       display: inline-block;
-      height: var(--caption-height);
-      padding-top: 24px; // TODO: gg, replace
+      height: $cuba-groupbox-caption-height;
+      padding-top: $cuba-groupbox-caption-height / 2;
 
       div {
         border-top: 2px solid var(--text-color);
