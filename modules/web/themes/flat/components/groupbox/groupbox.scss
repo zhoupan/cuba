@@ -3,9 +3,7 @@ $cuba-groupbox-caption-height--small: round($v-unit-size--small * 1.4);
 $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
 
 @mixin flat-groupbox($primary-stylename: c-groupbox) {
-  //.#{$primary-stylename} {
-    @include cuba-flat-groupbox-style($groupbox-caption-height: $cuba-groupbox-caption-height, $font-size: $v-font-size);
-  //}
+  @include cuba-flat-groupbox-style($groupbox-caption-height: $cuba-groupbox-caption-height, $font-size: $v-font-size);
 
   &.small {
     @include cuba-flat-groupbox-style($groupbox-caption-height: $cuba-groupbox-caption-height--small, $font-size: $v-font-size--small);
@@ -39,7 +37,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
     }
 
     .#{$primary-stylename}-caption-text {
-      font-weight: bold;
+      //font-weight: bold;
       color: var(--text-color);
     }
   }
@@ -64,7 +62,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
       padding-left: $padding;
 
       .#{$primary-stylename}-caption-text {
-        //font-weight: bold;
+        font-weight: bold;
       }
     }
 
@@ -120,7 +118,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
       padding: 0 0 0 $expander-padding + $expander-size;
     }
 
-    .#{$primary-stylename}-caption-start-deco,
+    //.#{$primary-stylename}-caption-start-deco,
     .#{$primary-stylename}-caption-end-deco {
       display: inline-block;
       height: $groupbox-caption-height;
@@ -128,15 +126,6 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
 
       div {
         border-top: 2px solid var(--text-color);
-      }
-    }
-
-    // TODO: gg, temporal workaround
-    .#{$primary-stylename}-caption-start-deco {
-      width: 0;
-
-      div {
-        border: 0;
       }
     }
   }
