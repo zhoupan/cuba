@@ -27,6 +27,12 @@ $v-font-weight: 400;
 
 $v-unit-size: 34px;
 
+$v-selection-item-height: $v-unit-size;
+$v-selection-item-height--small: $v-unit-size--small;
+$v-selection-item-height--large: $v-unit-size--large;
+
+$v-selection-overlay-padding-horizontal: 0;
+
 $v-default-field-width: $v-unit-size * 8;
 
 $v-border-radius: 6px;

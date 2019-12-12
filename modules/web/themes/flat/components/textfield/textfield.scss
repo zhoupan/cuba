@@ -21,20 +21,7 @@
   }
 
   .#{$primary-stylename} {
-    @include box-shadow(none);
-
-    border: 1px solid var(--border-color);
-    color: var(--text-color);
-
-    &::placeholder {
-      color: var(--second-text-color);
-    }
-
-    &:focus {
-      @include box-shadow(0 0 6px rgba(105, 121, 248, 0.15));
-
-      border-color: var(--focus-color);
-    }
+    @include cuba-flat-input-style;
   }
 
   .#{$primary-stylename}-readonly {
@@ -50,5 +37,24 @@
   &.large .#{$primary-stylename} {
     @include valo-textfield-style($unit-size: $v-unit-size--large, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
     font-size: $v-font-size--large;
+  }
+}
+
+// TODO: gg, move?
+@mixin cuba-flat-input-style() {
+  @include box-shadow(none);
+
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+
+  &::placeholder {
+    color: var(--second-text-color);
+  }
+
+  &:focus {
+    // TODO: gg, calculate?
+    @include box-shadow(0 0 6px rgba(105, 121, 248, 0.15));
+
+    border-color: var(--focus-color);
   }
 }
