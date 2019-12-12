@@ -28,8 +28,12 @@
   @include flat-groupbox;
   @include flat-textfield;
 
-  --primary-color: #6979F8; // blue-1
-  --focus-color: #A5AFFB;   // blue-2
+  --primary-color: #6979F8;             // blue-1
+  --primary-color_rgb: 105, 121, 248;   // blue-1
+  --focus-color: #A5AFFB;               // blue-2
+  --focus-color_rgb: 165, 175, 251;     // blue-2
+
+  --focus-style: 0 0 6px #{'rgba(var(--focus-color_rgb), 0.15)'};
 
   --danger-color: #FF647C;  // red-1
   --error-color: #FF647C;   // red-1

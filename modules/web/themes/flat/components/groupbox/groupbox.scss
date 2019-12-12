@@ -38,7 +38,6 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
   $expander-size: $groupbox-caption-height / 3;
   $expander-font-size: $expander-size;
 
-  // TODO: gg, refactor [class$="caption"]?
   .#{$primary-stylename} {
     border: 1px solid var(--focus-color);
   }

@@ -52,8 +52,7 @@
   }
 
   &:focus {
-    // TODO: gg, calculate?
-    @include box-shadow(0 0 6px rgba(105, 121, 248, 0.15));
+    @include box-shadow(var(--focus-style));
 
     border-color: var(--focus-color);
   }
