@@ -1,5 +1,24 @@
+/*
+ * Copyright (c) 2008-2016 Haulmont.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
 @mixin flat-filterselect($primary-stylename: v-filterselect) {
   .#{$primary-stylename} {
+    @include cuba-flat-filterselect-style;
+
     [class*="input"] {
       @include cuba-flat-input-style;
     }
@@ -7,10 +26,6 @@
     [class$="button"] {
       color: var(--text-color);
       border-left: 0;
-
-      &:before {
-        content: "\f0d7";
-      }
     }
 
     &.v-readonly {
@@ -26,57 +41,58 @@
 
   .#{$primary-stylename}-suggestpopup {
     [class$="suggestmenu"] {
+      @include cuba-flat-filterselect-suggestpopup-style;
       @include box-shadow(none);
 
       border: 1px solid var(--border-color);
       color: var(--text-color);
+
+      .gwt-MenuItem-selected {
+        background: var(--focus-color);
+        text-shadow: none;
+        border-radius: 0;
+      }
     }
 
-    .gwt-MenuItem-selected {
-      background: var(--focus-color);
-      text-shadow: none;
-      border-radius: 0;
-      //color: var(--primary-color);
-    }
   }
 
   &.small {
     .#{$primary-stylename} {
-      @include valo-combobox-style($unit-size: $v-unit-size--small, $bevel: null, $shadow: null, $gradient: null, $border: null, $border-radius: null, $background-color: null, $states: normal);
-      font-size: $v-font-size--small;
-
-      [class$="button"]:before {
-        content: "\f0d7";
-      }
+      @include cuba-flat-filterselect-style($v-unit-size--small, $v-font-size--small);
     }
 
     .#{$primary-stylename}-suggestpopup {
-      [class$="suggestmenu"] {
-        font-size: $v-font-size--small;
-        .gwt-MenuItem {
-          height: $v-selection-item-height--small;
-        }
-      }
+      @include cuba-flat-filterselect-suggestpopup-style($v-font-size--small, $v-selection-item-height--small)
     }
   }
 
   &.large {
     .#{$primary-stylename} {
-      @include valo-combobox-style($unit-size: $v-unit-size--large, $bevel: null, $shadow: null, $gradient: null, $border: null, $border-radius: null, $background-color: null, $states: normal);
-      font-size: $v-font-size--large;
-
-      [class$="button"]:before {
-        content: "\f0d7";
-      }
+      @include cuba-flat-filterselect-style($v-unit-size--large, $v-font-size--large);
     }
 
     .#{$primary-stylename}-suggestpopup {
-      [class$="suggestmenu"] {
-        font-size: $v-font-size--large;
-        .gwt-MenuItem {
-          height: $v-selection-item-height--large;
-        }
-      }
+      @include cuba-flat-filterselect-suggestpopup-style($v-font-size--large, $v-selection-item-height--large)
+    }
+  }
+}
+
+@mixin cuba-flat-filterselect-style($unit-size: $v-unit-size, $font-size: $v-font-size) {
+  @include valo-combobox-style($unit-size: $unit-size, $bevel: null, $shadow: null, $gradient: null, $border: null, $border-radius: null, $background-color: null, $states: normal);
+  font-size: $font-size;
+
+  [class$="button"]:before {
+    content: "\f0d7";
+  }
+}
+
+@mixin cuba-flat-filterselect-suggestpopup-style($font-size: $v-font-size, $selection-item-height: $v-selection-item-height) {
+  [class$="suggestmenu"] {
+    font-size: $font-size;
+
+    .gwt-MenuItem {
+      height: $selection-item-height;
+      line-height: $selection-item-height;
     }
   }
 }
