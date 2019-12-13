@@ -18,6 +18,7 @@
 @import "components/checkbox/checkbox";
 @import "components/filterselect/filterselect";
 @import "components/groupbox/groupbox";
+@import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/textfield/textfield";
 
@@ -27,6 +28,7 @@
   @include flat-checkbox;
   @include flat-filterselect;
   @include flat-groupbox;
+  @include flat-pickerfield;
   @include flat-radiobuttongroup;
   @include flat-textfield;
 
