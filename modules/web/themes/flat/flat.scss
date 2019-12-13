@@ -18,6 +18,7 @@
 @import "components/checkbox/checkbox";
 @import "components/filterselect/filterselect";
 @import "components/groupbox/groupbox";
+@import "components/radiobuttongroup/radiobuttongroup";
 @import "components/textfield/textfield";
 
 @mixin flat {
@@ -26,6 +27,7 @@
   @include flat-checkbox;
   @include flat-filterselect;
   @include flat-groupbox;
+  @include flat-radiobuttongroup;
   @include flat-textfield;
 
   --primary-color: #6979F8;             // blue-1
