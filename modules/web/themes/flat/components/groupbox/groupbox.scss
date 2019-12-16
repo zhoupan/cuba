@@ -39,7 +39,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
   $expander-font-size: $expander-size;
 
   .#{$primary-stylename} {
-    border: 1px solid var(--focus-color);
+    border: 1px solid var(--primary-color);
   }
 
   .#{$primary-stylename}-caption {

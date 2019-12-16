@@ -25,7 +25,7 @@
   }
 
   .#{$primary-stylename}-readonly {
-    background: var(--border-color);
+    @include cuba-flat-input-readonly-style;
   }
 
 
@@ -40,20 +40,28 @@
   }
 }
 
-// TODO: gg, move?
 @mixin cuba-flat-input-style() {
   @include box-shadow(none);
 
   border: 1px solid var(--border-color);
   color: var(--text-color);
 
+  $padding-height: ceil($v-unit-size/6);
+  $padding-width: ceil($v-unit-size/3);
+  padding: $padding-height $padding-width;
+
   &::placeholder {
-    color: var(--second-text-color);
+    color: var(--text-medium-color);
   }
 
   &:focus {
     @include box-shadow(var(--focus-style));
 
-    border-color: var(--focus-color);
+    border-color: var(--primary-color);
   }
+}
+
+@mixin cuba-flat-input-readonly-style() {
+  border-color: var(--read-only-color);
+  background: var(--read-only-color);
 }

@@ -58,13 +58,14 @@
     &:focus ~ label:before {
       @include box-shadow(var(--focus-style));
 
-      border-color: var(--focus-color);
+      border-color: var(--primary-color);
     }
   }
 
   &.v-readonly {
     :root & > input ~ label:before {
-      background: var(--border-color);
+      border-color: var(--read-only-color);
+      background: var(--read-only-color);
     }
   }
 }

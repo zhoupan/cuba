@@ -15,6 +15,7 @@
  */
 
 @import "../halo/halo";
+@import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/filterselect/filterselect";
 @import "components/groupbox/groupbox";
@@ -25,6 +26,7 @@
 @mixin flat {
   @include halo;
 
+  @include flat-button;
   @include flat-checkbox;
   @include flat-filterselect;
   @include flat-groupbox;
@@ -32,21 +34,19 @@
   @include flat-radiobuttongroup;
   @include flat-textfield;
 
-  --primary-color: #6979F8;             // blue-1
-  --primary-color_rgb: 105, 121, 248;   // blue-1
-  --focus-color: #A5AFFB;               // blue-2
-  --focus-color_rgb: 165, 175, 251;     // blue-2
+  --primary-color: #6F5CC3;
+  --primary-color_rgb: 111, 92, 195;
 
-  --focus-style: 0 0 6px #{'rgba(var(--focus-color_rgb), 0.15)'};
+  --focus-style: 0 0 6px #{'rgba(var(--primary-color_rgb), 0.15)'};
 
-  --danger-color: #FF647C;  // red-1
-  --error-color: #FF647C;   // red-1
+  --danger-color: #FF647C;
+  --error-color: #FF647C;
 
-  --green-one: #00C48C;     // green-1
-  --green-two: #7DDFC3;     // green-2
-  --green-three: #D5F2EA;   // green-3
+  --border-color: #B0B7C3;      // Text - Disabled
 
-  --border-color: #F2F2F2;      // gray-1
-  --second-text-color: #828282; // gray-2
-  --text-color: #333333;        // gray-3
+  --read-only-color: #F2F2F2;
+
+
+  --text-color: #0A2044;        // Text - Main
+  --text-medium-color: #4F5C78; // Text - Medium
 }

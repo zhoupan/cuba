@@ -32,11 +32,12 @@
     @include box-shadow(none);
 
     color: var(--text-color);
+    border-color: var(--border-color);
 
     &:focus {
       @include box-shadow(var(--focus-style));
 
-      border-color: var(--focus-color);
+      border-color: var(--primary-color);
     }
   }
 

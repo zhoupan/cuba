@@ -30,7 +30,7 @@
 
     &.v-readonly {
       [class*="input"] {
-        background: var(--border-color);
+        @include cuba-flat-input-readonly-style;
       }
 
       &:focus {
@@ -48,7 +48,7 @@
       color: var(--text-color);
 
       .gwt-MenuItem-selected {
-        background: var(--focus-color);
+        background: var(--primary-color);
         text-shadow: none;
         border-radius: 0;
       }

@@ -46,7 +46,7 @@
         height: $size;
         top: $offset;
         left: $offset;
-        background: var(--focus-color);
+        background: var(--primary-color);
       }
 
       & ~ label:before,
@@ -56,7 +56,7 @@
       }
 
       & ~ label:before {
-        border-color: var(--focus-color);
+        border-color: var(--primary-color);
         border-width: 2px;
       }
 

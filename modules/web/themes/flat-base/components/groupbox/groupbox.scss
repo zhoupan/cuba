@@ -10,7 +10,7 @@
     --caption-height: 48px;
     --collapsed-color: #F2F2F2;
 
-    border: 1px solid var(--focus-color);
+    border: 1px solid var(--primary-color);
   }
 
   .#{$primary-stylename}.collapsed {
