@@ -62,6 +62,12 @@
 }
 
 @mixin cuba-flat-input-readonly-style() {
+  color: var(--text-medium-color);
   border-color: var(--read-only-color);
   background: var(--read-only-color);
+
+  &:focus {
+    @include box-shadow(none);
+    border-color: var(--border-color);
+  }
 }

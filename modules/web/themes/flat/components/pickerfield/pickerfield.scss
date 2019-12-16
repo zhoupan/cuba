@@ -17,6 +17,12 @@
 @mixin flat-pickerfield($primary-stylename: c-pickerfield) {
   @include cuba-flat-pickerfield-style($pickerfield-size: $v-unit-size, $font-size: $v-font-size);
 
+  .#{$primary-stylename}.v-readonly {
+    .v-textfield.v-textfield-readonly {
+      @include cuba-flat-input-readonly-style;
+    }
+  }
+
   &.small {
     @include cuba-flat-pickerfield-style($pickerfield-size: $v-unit-size--small, $font-size: $v-font-size--small);
   }
@@ -42,6 +48,7 @@
   }
 
   .v-button.#{$primary-stylename}-button {
+    border-color: var(--border-color);
     font-size: $font-size;
     width: $pickerfield-size;
     min-width: $pickerfield-size;

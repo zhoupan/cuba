@@ -17,7 +17,7 @@
 @import "../halo/halo";
 @import "components/button/button";
 @import "components/checkbox/checkbox";
-@import "components/filterselect/filterselect";
+@import "components/combobox/combobox";
 @import "components/groupbox/groupbox";
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
@@ -28,7 +28,7 @@
 
   @include flat-button;
   @include flat-checkbox;
-  @include flat-filterselect;
+  @include flat-combobox;
   @include flat-groupbox;
   @include flat-pickerfield;
   @include flat-radiobuttongroup;

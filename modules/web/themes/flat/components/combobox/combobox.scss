@@ -15,7 +15,7 @@
  *
  */
 
-@mixin flat-filterselect($primary-stylename: v-filterselect) {
+@mixin flat-combobox($primary-stylename: v-filterselect) {
   .#{$primary-stylename} {
     @include cuba-flat-filterselect-style;
 
@@ -31,10 +31,6 @@
     &.v-readonly {
       [class*="input"] {
         @include cuba-flat-input-readonly-style;
-      }
-
-      &:focus {
-        // TODO: gg, border-color?
       }
     }
   }
