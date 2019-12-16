@@ -53,6 +53,7 @@
 
       background: transparent;
       border-color: var(--border-color);
+      border-width: 2px;
     }
 
     &:focus ~ label:before {

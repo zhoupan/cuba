@@ -35,6 +35,12 @@
     }
   }
 
+  .#{$primary-stylename}-no-input {
+    [class*="input"] {
+      background: inherit;
+    }
+  }
+
   .#{$primary-stylename}-suggestpopup {
     [class$="suggestmenu"] {
       @include cuba-flat-filterselect-suggestpopup-style;

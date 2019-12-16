@@ -55,9 +55,7 @@
   }
 
   &:focus {
-    @include box-shadow(var(--focus-style));
-
-    border-color: var(--primary-color);
+    @include cuba-flat-input-focus-style;
   }
 }
 
@@ -70,4 +68,9 @@
     @include box-shadow(none);
     border-color: var(--border-color);
   }
+}
+
+@mixin cuba-flat-input-focus-style() {
+  @include box-shadow(var(--focus-style));
+  border-color: var(--primary-color);
 }

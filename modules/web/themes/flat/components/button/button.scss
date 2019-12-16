@@ -21,19 +21,18 @@
 
     border: 1px solid var(--border-color);
     background: var(--border-color);
-    color: var(--text-medium-color);
+    color: var(--button-text-color);
 
-    &:hover:after {
+    &:hover {
       // TODO: gg, ?
     }
 
-    &:active:after {
-      // TODO: gg, ?
+    &:active:not(.v-disabled) {
+      background: var(--text-medium-color);
     }
 
     &:focus:after {
       @include box-shadow(var(--focus-style));
-
       border-color: var(--primary-color);
     }
 

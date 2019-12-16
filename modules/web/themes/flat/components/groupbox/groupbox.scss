@@ -70,7 +70,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
     border-color: var(--border-color);
 
     .#{$primary-stylename}-expander {
-      color: var(--green-one);
+      color: var(--success-color);
     }
   }
 
@@ -123,7 +123,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
       background-color: transparent;
 
       .#{$primary-stylename}-caption-end-deco > div {
-        border-color: var(--green-one);
+        border-color: var(--success-color);
       }
     }
 

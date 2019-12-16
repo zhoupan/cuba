@@ -35,16 +35,7 @@
 @mixin cuba-flat-pickerfield-style($primary-stylename: c-pickerfield, $pickerfield-size: $v-unit-size, $font-size: $v-font-size) {
 
   .v-textfield.#{$primary-stylename}-text {
-    @include box-shadow(none);
-
-    color: var(--text-color);
-    border-color: var(--border-color);
-
-    &:focus {
-      @include box-shadow(var(--focus-style));
-
-      border-color: var(--primary-color);
-    }
+    @include cuba-flat-input-style;
   }
 
   .v-button.#{$primary-stylename}-button {
