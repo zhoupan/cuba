@@ -752,7 +752,7 @@ configure(webModule) {
     }
 
     task buildScssThemes(type: CubaWebScssThemeCreation) {
-        themes = ['halo', 'hover', 'havana', 'flat', 'flat-base']
+        themes = ['halo', 'hover', 'havana', 'flat']
 //        compress = true
 //        sprites = true
 //        cleanup = true
