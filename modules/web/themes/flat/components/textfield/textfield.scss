@@ -28,7 +28,8 @@
     @include cuba-flat-input-readonly-style;
   }
 
-  .#{$primary-stylename}-error {
+  .#{$primary-stylename}-error,
+  .#{$primary-stylename}-error-error {
     @include cuba-flat-input-error-style;
   }
 
@@ -79,7 +80,7 @@
 }
 
 @mixin cuba-flat-input-error-style() {
-  border-color: var(--error-color);
+  border-color: var(--error-color) !important;
   background: var(--error-disabled-color);
 
   &:focus {

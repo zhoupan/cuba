@@ -41,6 +41,13 @@
     }
   }
 
+  .#{$primary-stylename}-error,
+  .#{$primary-stylename}-error-error {
+    [class*="input"] {
+      @include cuba-flat-input-error-style;
+    }
+  }
+
   .#{$primary-stylename}-suggestpopup {
     [class$="suggestmenu"] {
       @include cuba-flat-filterselect-suggestpopup-style;
