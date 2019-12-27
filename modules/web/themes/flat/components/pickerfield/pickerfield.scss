@@ -23,6 +23,20 @@
     }
   }
 
+  .#{$primary-stylename}-error {
+    .v-filterselect .v-filterselect-input,
+    .c-searchselect .c-searchselect-input,
+    .v-textfield.v-textfield-readonly,
+    .c-suggestionfield {
+      @include cuba-flat-input-error-style;
+    }
+
+    .v-filterselect .v-filterselect-button {
+      color: var(--text-color);
+      border-color: var(--error-color);
+    }
+  }
+
   &.small {
     @include cuba-flat-pickerfield-style($pickerfield-size: $v-unit-size--small, $font-size: $v-font-size--small);
   }
