@@ -39,23 +39,19 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
   $expander-font-size: $expander-size;
 
   .#{$primary-stylename} {
-    border: 1px solid var(--primary-color);
+    border: 1px solid var(--primary-disabled-color);
   }
 
   .#{$primary-stylename}-caption {
     padding: 0 $padding 0 $expander-padding;
     line-height: $groupbox-caption-height;
     font-size: $font-size;
+    color: var(--text-medium-color);
 
     .#{$primary-stylename}-expander {
       font-size: $expander-font-size;
       width: $expander-size;
       margin-right: $expander-padding;
-    }
-
-    .#{$primary-stylename}-caption-text {
-      //font-weight: bold;
-      color: var(--text-color);
     }
   }
 
@@ -66,12 +62,8 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
   }
 
   .#{$primary-stylename}.collapsed {
-    background-color: var(--border-color);
-    border-color: var(--border-color);
-
-    .#{$primary-stylename}-expander {
-      color: var(--success-color);
-    }
+    background-color: var(--primary-disabled-color);
+    border-color: var(--primary-disabled-color);
   }
 
   .#{$primary-stylename}-nocollapsable {
@@ -121,10 +113,6 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
 
     &.collapsed {
       background-color: transparent;
-
-      .#{$primary-stylename}-caption-end-deco > div {
-        border-color: var(--success-color);
-      }
     }
 
     .#{$primary-stylename}-caption {
