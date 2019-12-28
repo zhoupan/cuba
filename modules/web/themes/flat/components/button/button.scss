@@ -17,8 +17,6 @@
 
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
-    @include box-shadow(none);
-
     border: 1px solid var(--border-color);
     background: var(--border-color);
     color: var(--button-text-color);
@@ -32,7 +30,6 @@
     }
 
     &:focus:after {
-      @include box-shadow(var(--focus-style));
       border-color: var(--primary-color);
     }
 

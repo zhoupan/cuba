@@ -20,12 +20,12 @@
 $v-line-height: 1.35;
 
 $v-font-size: 14px;
-
-$v-caption-font-size: $v-font-size;
-$v-tabsheet-caption-font-size: $v-font-size;
 $v-font-weight: 400;
 
 $v-unit-size: 34px;
+
+$v-caption-font-size: $v-font-size;
+$v-tabsheet-caption-font-size: $v-font-size;
 
 $v-selection-item-height: $v-unit-size;
 $v-selection-item-height--small: $v-unit-size--small;
@@ -38,74 +38,81 @@ $v-default-field-width: $v-unit-size * 8;
 
 $v-border-radius: 6px;
 
-$v-font-size--h1: 22px;
-$v-font-size--h2: 18px;
-$v-font-size--h3: 16px;
+//$v-font-size--h1: 22px;
+//$v-font-size--h2: 18px;
+//$v-font-size--h3: 16px;
 
-$v-layout-margin-top: 10px;
-$v-layout-margin-left: 10px;
-$v-layout-margin-right: 10px;
-$v-layout-margin-bottom: 10px;
+//$v-layout-margin-top: 10px;
+//$v-layout-margin-left: 10px;
+//$v-layout-margin-right: 10px;
+//$v-layout-margin-bottom: 10px;
 
-$v-layout-spacing-vertical: 10px;
-$v-layout-spacing-horizontal: 10px;
+//$v-layout-spacing-vertical: 10px;
+//$v-layout-spacing-horizontal: 10px;
 
-$v-table-row-height: 30px;
-$v-table-header-font-size: 13px;
-$v-table-cell-padding-horizontal: 7px;
+//$v-table-row-height: 30px;
+//$v-table-header-font-size: 13px;
+//$v-table-cell-padding-horizontal: 7px;
 
-$v-focus-style: inset 0px 0px 3px 1px rgba($v-focus-color, 0.5);
-$v-error-focus-style: inset 0px 0px 3px 1px rgba($v-error-indicator-color, 0.5);
-$v-error-indicator-use-bg: false;
-$v-error-indicator-use-color: false;
+$v-focus-style: none;
+$v-error-focus-style: none;
+//$v-error-indicator-use-bg: false;
+//$v-error-indicator-use-color: false;
 
-$cuba-login-btn-background: #1b6198 none;
-$cuba-login-btn-font-weight: 700;
-$cuba-login-btn-height: $v-unit-size + $v-unit-size / 3;
-$cuba-login-btn-margin-top: 0;
-$cuba-login-btn-width: 100%;
+$v-bevel: none;
+$v-textfield-bevel: none;
+$v-textfield-shadow: none;
+$v-shadow: none;
+$v-gradient: none;
+$v-link-text-decoration: none;
 
-$cuba-login-caption-font-size: round($v-font-size * 1.45);
-$cuba-login-caption-font-weight: 700;
-$cuba-login-locale-border-width: 0;
-$cuba-login-locale-text-align: right;
-$cuba-login-logo-height: $v-unit-size + $v-unit-size / 3;
-$cuba-login-panel-padding:$v-unit-size + $v-unit-size / 3;
-$cuba-login-password-border-radius: 0 0 $v-border-radius $v-border-radius;
-$cuba-login-password-height: $v-unit-size + $v-unit-size / 3;
-$cuba-login-username-border-radius: $v-border-radius $v-border-radius 0 0;
-$cuba-login-username-height: $v-unit-size + $v-unit-size / 3;
+//$cuba-login-btn-background: #1b6198 none;
+//$cuba-login-btn-font-weight: 700;
+//$cuba-login-btn-height: $v-unit-size + $v-unit-size / 3;
+//$cuba-login-btn-margin-top: 0;
+//$cuba-login-btn-width: 100%;
+
+//$cuba-login-caption-font-size: round($v-font-size * 1.45);
+//$cuba-login-caption-font-weight: 700;
+//$cuba-login-locale-border-width: 0;
+//$cuba-login-locale-text-align: right;
+//$cuba-login-logo-height: $v-unit-size + $v-unit-size / 3;
+//$cuba-login-panel-padding:$v-unit-size + $v-unit-size / 3;
+//$cuba-login-password-border-radius: 0 0 $v-border-radius $v-border-radius;
+//$cuba-login-password-height: $v-unit-size + $v-unit-size / 3;
+//$cuba-login-username-border-radius: $v-border-radius $v-border-radius 0 0;
+//$cuba-login-username-height: $v-unit-size + $v-unit-size / 3;
 
 /**
  * Whether to enable show/hide animations for dialog windows.
  * @group window
  */
-$v-window-animations-enabled: false !default;
+//$v-window-animations-enabled: false !default;
 /**
  * Whether to include styles for inverse colored main menu.
  * @group menubar
  */
-$v-support-inverse-menu: true !default;
+//$v-support-inverse-menu: true !default;
 /**
  * Whether to show or not separate * element for required fields.
  * @group field
  */
-$v-show-required-indicators: false !default;
+//$v-show-required-indicators: false !default;
 /**
  * The background color of hovered item.
  */
-$cuba-hover-color: #d3eaf8 !default;
+//$cuba-hover-color: #d3eaf8 !default;
 /**
  * Enables custom colored scrollbars for webkit/blink browsers.
  * @group scrollbar
  */
-$cuba-scrollbars-style-enabled: false !default;
+//$cuba-scrollbars-style-enabled: false !default;
 /**
  * Whether buttons should be placed in one row or can wrap onto multiple rows.
  * @group buttonspanel
  */
-$cuba-buttonspanel-flow: true !default;
+//$cuba-buttonspanel-flow: true !default;
 /**
  *  Whether to show a border for the Tree component
  */
-$cuba-show-tree-border: true !default;
+//$cuba-show-tree-border: true !default;

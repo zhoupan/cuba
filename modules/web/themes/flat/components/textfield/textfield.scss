@@ -45,8 +45,6 @@
 }
 
 @mixin cuba-flat-input-style() {
-  @include box-shadow(none);
-
   border: 1px solid var(--border-color);
   color: var(--text-color);
 
@@ -69,13 +67,11 @@
   background: var(--read-only-color);
 
   &:focus {
-    @include box-shadow(none);
     border-color: var(--border-color);
   }
 }
 
 @mixin cuba-flat-input-focus-style() {
-  @include box-shadow(none);
   border-color: var(--primary-color);
 }
 
@@ -84,7 +80,6 @@
   background: var(--error-disabled-color);
 
   &:focus {
-    @include box-shadow(none);
     border-color: var(--error-color);
   }
 }
