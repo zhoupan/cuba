@@ -31,6 +31,10 @@
 }
 
 @mixin cuba-flat-radiobuttongroup-style($radiobuttongroup-size: $v-unit-size) {
+  &.v-readonly .v-radiobutton.v-disabled {
+    color: var(--text-medium-color);
+  }
+
   .v-radiobutton {
     @include cuba-flat-checkbox-style($radiobuttongroup-size);
 
@@ -54,19 +58,13 @@
         border-radius: 50%;
         content: "";
       }
+    }
 
-      & ~ label:before {
-        border-color: var(--primary-color);
-        border-width: 2px;
-      }
-
-      &:focus {
+    &.v-readonly,
+    &.v-disabled {
+      :root & > input {
         &:checked ~ label:after {
-          background: var(--primary-color);
-        }
-
-        & ~ label:before {
-          border-color: var(--primary-color);
+          background: var(--read-only-border-color);
         }
       }
     }
