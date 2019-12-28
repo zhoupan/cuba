@@ -36,7 +36,7 @@
   // Since we do not want the CheckBox to be half smaller, we need to provide twice the size.
   @include valo-checkbox-style($unit-size: $checkbox-size * 2);
 
-  color: var(--text-color);
+  color: var(--text-medium-color);
   height: $checkbox-size;
 
   :root & {
@@ -44,10 +44,6 @@
   }
 
   :root & > input {
-    &:checked ~ label:after {
-      color: var(--primary-color);
-    }
-
     & ~ label:before {
       @include box-shadow(none);
 
@@ -56,17 +52,53 @@
       border-width: 2px;
     }
 
-    &:focus ~ label:before {
-      @include box-shadow(var(--focus-style));
+    & ~ label:before,
+    & ~ label:after {
+      border-radius: ceil($v-border-radius / 2);
+    }
 
+    &:checked {
+      & ~ label:before {
+        border-color: var(--primary-color);
+      }
+
+      & ~ label:after {
+        color: var(--primary-color);
+      }
+    }
+
+    &:focus ~ label:before {
+      @include box-shadow(none);
+
+      border-color: var(--border-color);
+      background: var(--read-only-border-color);
+    }
+
+    &:focus:checked  ~ label:before {
       border-color: var(--primary-color);
+      background: var(--primary-disabled-color);
     }
   }
 
-  &.v-readonly {
-    :root & > input ~ label:before {
-      border-color: var(--read-only-color);
-      background: var(--read-only-color);
+  &.v-readonly,
+  &.v-disabled {
+    :root & > input {
+      & ~ label:before {
+        border-color: var(--read-only-border-color);
+      }
+
+      &:checked ~ label:after {
+        color: var(--read-only-border-color);
+        opacity: 1;
+      }
+    }
+  }
+
+  &.v-disabled {
+    color: var(--read-only-border-color);
+
+    :root & > input ~ label {
+      opacity: 1;
     }
   }
 }
