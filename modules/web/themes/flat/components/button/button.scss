@@ -15,114 +15,35 @@
  *
  */
 
+$cuba-button-border-width: 2px;
+
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
-    border: 2px solid var(--secondary-disabled-color);
-    background: var(--secondary-disabled-color);
-    color: var(--text-color);
+    @include flat-button-default-style;
+
+    border-width: $cuba-button-border-width;
+    border-style: solid;
 
     &:after {
       display: none;
     }
 
-    &:hover:not(.v-disabled) {
-      border-color: var(--button-default-hover-color);
-      background: var(--button-default-hover-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--button-default-active-color);
-      background: var(--button-default-active-color);
-    }
-
-    &:focus:not(.v-disabled) {
-      border-color: var(--button-default-disabled-color);
-    }
-
     &.v-disabled {
       opacity: 1;
-      border-color: var(--button-default-disabled-color);
-      background: var(--button-default-disabled-color);
-      color: var(--read-only-border-color);
     }
   }
 
-  .#{$primary-stylename}-primary {
-    border-color: var(--primary-color);
-    background: var(--primary-color);
-    color: var(--button-text-color);
-
-    &:hover:not(.v-disabled) {
-      border-color: var(--primary-hover-color);
-      background: var(--primary-hover-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--primary-active-color);
-      background: var(--primary-active-color);
-    }
-
-    &:focus:not(.v-disabled) {
-      border-color: var(--primary-disabled-color);
-    }
-
-    &.v-disabled {
-      border-color: var(--primary-disabled-color);
-      background: var(--primary-disabled-color);
-      color: var(--button-text-color);
-    }
+  .#{$primary-stylename}-primary,
+  .#{$primary-stylename}.c-primary-action {
+    @include flat-button-primary-style;
   }
 
   .#{$primary-stylename}-friendly {
-    border-color: var(--success-color);
-    background: var(--success-color);
-    color: var(--button-text-color);
-
-    &:hover:not(.v-disabled) {
-      border-color: var(--success-hover-color);
-      background: var(--success-hover-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--success-active-color);
-      background: var(--success-active-color);
-    }
-
-    &:focus:not(.v-disabled) {
-      border-color: var(--success-disabled-color);
-    }
-
-    &.v-disabled {
-      border-color: var(--success-disabled-color);
-      background: var(--success-disabled-color);
-      color: var(--button-text-color);
-    }
+    @include flat-button-friendly-style;
   }
 
   .#{$primary-stylename}-danger {
-    border-color: var(--error-color);
-    background: var(--error-color);
-    color: var(--button-text-color);
-
-    &:hover:not(.v-disabled) {
-      border-color: var(--error-hover-color);
-      background: var(--error-hover-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--error-active-color);
-      background: var(--error-active-color);
-    }
-
-    &:focus:not(.v-disabled) {
-      border-color: var(--error-disabled-color);
-    }
-
-    &.v-disabled {
-      border-color: var(--error-disabled-color);
-      background: var(--error-disabled-color);
-      color: var(--button-text-color);
-    }
+    @include flat-button-danger-style
   }
 
   .#{$primary-stylename}-link {
@@ -205,5 +126,117 @@
       border-color: transparent;
       background: transparent;
     }
+  }
+
+  &.small .#{$primary-stylename} {
+    @include valo-button-style($unit-size: $v-unit-size--small, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--small, $font-weight: null);
+  }
+
+  &.large .#{$primary-stylename} {
+    @include valo-button-style($unit-size: $v-unit-size--large, $bevel: null, $shadow: null, $background-color: null, $font-size: $v-font-size--large, $font-weight: null);
+  }
+}
+
+@mixin flat-button-default-style() {
+  border-color: var(--secondary-disabled-color);
+  background: var(--secondary-disabled-color);
+  color: var(--text-color);
+
+  &:hover:not(.v-disabled) {
+    border-color: var(--button-default-hover-color);
+    background: var(--button-default-hover-color);
+  }
+
+  &:active:not(.v-disabled) {
+    border-color: var(--button-default-active-color);
+    background: var(--button-default-active-color);
+  }
+
+  &:focus:not(.v-disabled) {
+    border-color: var(--button-default-disabled-color);
+  }
+
+  &.v-disabled {
+    border-color: var(--button-default-disabled-color);
+    background: var(--button-default-disabled-color);
+    color: var(--read-only-border-color);
+  }
+}
+
+@mixin flat-button-primary-style() {
+  border-color: var(--primary-color);
+  background: var(--primary-color);
+  color: var(--button-text-color);
+
+  &:hover:not(.v-disabled) {
+    border-color: var(--primary-hover-color);
+    background: var(--primary-hover-color);
+  }
+
+  &:active:not(.v-disabled) {
+    border-color: var(--primary-active-color);
+    background: var(--primary-active-color);
+  }
+
+  &:focus:not(.v-disabled) {
+    border-color: var(--primary-disabled-color);
+  }
+
+  &.v-disabled {
+    border-color: var(--primary-disabled-color);
+    background: var(--primary-disabled-color);
+    color: var(--button-text-color);
+  }
+}
+
+@mixin flat-button-friendly-style() {
+  border-color: var(--success-color);
+  background: var(--success-color);
+  color: var(--button-text-color);
+
+  &:hover:not(.v-disabled) {
+    border-color: var(--success-hover-color);
+    background: var(--success-hover-color);
+  }
+
+  &:active:not(.v-disabled) {
+    border-color: var(--success-active-color);
+    background: var(--success-active-color);
+  }
+
+  &:focus:not(.v-disabled) {
+    border-color: var(--success-disabled-color);
+  }
+
+  &.v-disabled {
+    border-color: var(--success-disabled-color);
+    background: var(--success-disabled-color);
+    color: var(--button-text-color);
+  }
+}
+
+@mixin flat-button-danger-style() {
+  border-color: var(--error-color);
+  background: var(--error-color);
+  color: var(--button-text-color);
+
+  &:hover:not(.v-disabled) {
+    border-color: var(--error-hover-color);
+    background: var(--error-hover-color);
+  }
+
+  &:active:not(.v-disabled) {
+    border-color: var(--error-active-color);
+    background: var(--error-active-color);
+  }
+
+  &:focus:not(.v-disabled) {
+    border-color: var(--error-disabled-color);
+  }
+
+  &.v-disabled {
+    border-color: var(--error-disabled-color);
+    background: var(--error-disabled-color);
+    color: var(--button-text-color);
   }
 }

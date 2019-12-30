@@ -27,6 +27,7 @@ $v-unit-size: 34px;
 $v-caption-font-size: $v-font-size;
 $v-tabsheet-caption-font-size: $v-font-size;
 
+$v-selection-item-border-radius: 0;
 $v-selection-item-height: $v-unit-size;
 $v-selection-item-height--small: $v-unit-size--small;
 $v-selection-item-height--large: $v-unit-size--large;
@@ -116,3 +117,10 @@ $v-link-text-decoration: none;
  *  Whether to show a border for the Tree component
  */
 //$cuba-show-tree-border: true !default;
+
+//$cuba-checkbox-size: 18px;
+//$cuba-checkbox-line-height: $cuba-checkbox-size;
+
+$cuba-filter-friendly-search-button: true;
+
+$cuba-highlight-primary-action: true;

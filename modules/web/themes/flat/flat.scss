@@ -15,9 +15,11 @@
  */
 
 @import "../halo/halo";
+@import "app/generic-filter";
 @import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/combobox/combobox";
+@import "components/contextmenu/contextmenu-button";
 @import "components/groupbox/groupbox";
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
@@ -26,9 +28,12 @@
 @mixin flat {
   @include halo;
 
+  @include flat-cuba-generic-filter;
+
   @include flat-button;
   @include flat-checkbox;
   @include flat-combobox;
+  @include flat-cuba-contextmenu-button;
   @include flat-groupbox;
   @include flat-pickerfield;
   @include flat-radiobuttongroup;
@@ -69,6 +74,7 @@
   --success-active-color: #1E5D46;      // Success - Hover (d10%)
   --success-disabled-color: #9BDFC6;    // Success - Disabled (l30%)
 
+  --secondary-color: #637497;           // Gray - Light
   --secondary-hover-color: #686868;     // Secondary - Hover (d10%)
   --secondary-disabled-color: #CECECE;  // Secondary - Disabled (l30%)
 
