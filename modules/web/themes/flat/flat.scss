@@ -39,13 +39,15 @@
 
   --primary-hover-color: #5440AC;     // Primary - Hover (d10%)
   --primary-disabled-color: #D2CCEC;  // Primary - Disabled (l30%)
+  --primary-active-color: #423287;    //
 
   //--focus-style: 0 0 6px #{'rgba(var(--primary-color_rgb), 0.15)'};
 
-  --danger-color: #FF647C;          // Warning
-  --error-color: #FF647C;           // Warning
+  --danger-color: #FF647C;              // Warning
+  --error-color: #FF647C;               // Warning
 
-  --error-hover-color: #FF647C;         // Warning - Hover (d10%)
+  --error-hover-color: #FF3151;         // Warning - Hover (d10%)
+  --error-active-color: #FD0027;        // Warning - Hover (d10%)
   --error-disabled-color: #FFCAD2;      // Warning - Disabled (l20%)
 
   --border-color: #637497;              // Gray - Light
@@ -58,15 +60,19 @@
 
   --button-text-color: #FFFFFF;
 
-  --gray-light-color: #637497;          // Gray - Light
-  --gray-hover-color: #F2F2F2;          // Gray - Hover
-  --gray-disabled-color: #A0AAC0;       // Gray - Disabled
+  //--gray-light-color: #637497;          // Gray - Light
+  //--gray-hover-color: #F2F2F2;          // Gray - Hover
+  //--gray-disabled-color: #A0AAC0;       // Gray - Disabled
 
   --success-color: #36AB80;             // Success
   --success-hover-color: #2A8463;       // Success - Hover (d10%)
+  --success-active-color: #1E5D46;      // Success - Hover (d10%)
   --success-disabled-color: #9BDFC6;    // Success - Disabled (l30%)
-
 
   --secondary-hover-color: #686868;     // Secondary - Hover (d10%)
   --secondary-disabled-color: #CECECE;  // Secondary - Disabled (l30%)
+
+  --button-default-disabled-color: #E7E7E7;
+  --button-default-hover-color: #B4B4B4;
+  --button-default-active-color: #9B9B9B;
 }

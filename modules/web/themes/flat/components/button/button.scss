@@ -17,23 +17,193 @@
 
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
-    border: 1px solid var(--border-color);
-    background: var(--border-color);
-    color: var(--button-text-color);
+    border: 2px solid var(--secondary-disabled-color);
+    background: var(--secondary-disabled-color);
+    color: var(--text-color);
 
-    &:hover {
-      // TODO: gg, ?
+    &:after {
+      display: none;
+    }
+
+    &:hover:not(.v-disabled) {
+      border-color: var(--button-default-hover-color);
+      background: var(--button-default-hover-color);
     }
 
     &:active:not(.v-disabled) {
-      background: var(--text-medium-color);
+      border-color: var(--button-default-active-color);
+      background: var(--button-default-active-color);
     }
 
-    &:focus:after {
+    &:focus:not(.v-disabled) {
+      border-color: var(--button-default-disabled-color);
+    }
+
+    &.v-disabled {
+      opacity: 1;
+      border-color: var(--button-default-disabled-color);
+      background: var(--button-default-disabled-color);
+      color: var(--read-only-border-color);
+    }
+  }
+
+  .#{$primary-stylename}-primary {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: var(--button-text-color);
+
+    &:hover:not(.v-disabled) {
+      border-color: var(--primary-hover-color);
+      background: var(--primary-hover-color);
+    }
+
+    &:active:not(.v-disabled) {
+      border-color: var(--primary-active-color);
+      background: var(--primary-active-color);
+    }
+
+    &:focus:not(.v-disabled) {
+      border-color: var(--primary-disabled-color);
+    }
+
+    &.v-disabled {
+      border-color: var(--primary-disabled-color);
+      background: var(--primary-disabled-color);
+      color: var(--button-text-color);
+    }
+  }
+
+  .#{$primary-stylename}-friendly {
+    border-color: var(--success-color);
+    background: var(--success-color);
+    color: var(--button-text-color);
+
+    &:hover:not(.v-disabled) {
+      border-color: var(--success-hover-color);
+      background: var(--success-hover-color);
+    }
+
+    &:active:not(.v-disabled) {
+      border-color: var(--success-active-color);
+      background: var(--success-active-color);
+    }
+
+    &:focus:not(.v-disabled) {
+      border-color: var(--success-disabled-color);
+    }
+
+    &.v-disabled {
+      border-color: var(--success-disabled-color);
+      background: var(--success-disabled-color);
+      color: var(--button-text-color);
+    }
+  }
+
+  .#{$primary-stylename}-danger {
+    border-color: var(--error-color);
+    background: var(--error-color);
+    color: var(--button-text-color);
+
+    &:hover:not(.v-disabled) {
+      border-color: var(--error-hover-color);
+      background: var(--error-hover-color);
+    }
+
+    &:active:not(.v-disabled) {
+      border-color: var(--error-active-color);
+      background: var(--error-active-color);
+    }
+
+    &:focus:not(.v-disabled) {
+      border-color: var(--error-disabled-color);
+    }
+
+    &.v-disabled {
+      border-color: var(--error-disabled-color);
+      background: var(--error-disabled-color);
+      color: var(--button-text-color);
+    }
+  }
+
+  .#{$primary-stylename}-link {
+    border: 1px dashed transparent;
+    background: transparent;
+    color: var(--primary-color);
+
+    &:hover:not(.v-disabled) {
+      border-color: transparent;
+      background: transparent;
+      color: var(--primary-hover-color);
+    }
+
+    &:focus:not(.v-disabled) {
       border-color: var(--primary-color);
     }
 
-    .#{$primary-stylename}-caption {
+    &:active:not(.v-disabled) {
+      border-color: var(--primary-active-color);
+      background: transparent;
+      color: var(--primary-active-color);
+      opacity: 1;
+    }
+
+    &.v-disabled {
+      border-color: transparent;
+      background: transparent;
+      color: var(--primary-disabled-color);
+    }
+  }
+
+  .#{$primary-stylename}-borderless,
+  .#{$primary-stylename}-borderless-colored {
+    border-color: transparent;
+    background: transparent;
+
+    &:hover:not(.v-disabled) {
+      border-color: transparent;
+      background: transparent;
+    }
+
+    &:active:not(.v-disabled) {
+      background: transparent;
+      opacity: 1;
+    }
+
+    &.v-disabled {
+      border-color: transparent;
+      background: transparent;
+    }
+  }
+
+  .#{$primary-stylename}-borderless {
+    &:focus:not(.v-disabled) {
+      border-color: var(--button-default-disabled-color);
+    }
+
+    &:active:not(.v-disabled) {
+      border-color: var(--button-default-active-color);
+    }
+  }
+
+  .#{$primary-stylename}-borderless-colored {
+    &:hover:not(.v-disabled) {
+      color: var(--text-color);
+    }
+
+    &:focus:not(.v-disabled) {
+      border-color: var(--primary-disabled-color);
+    }
+
+    &:active:not(.v-disabled) {
+      border-color: var(--primary-active-color);
+      color: var(--primary-active-color);
+    }
+  }
+
+  .#{$primary-stylename}-quiet {
+    &.v-disabled {
+      border-color: transparent;
+      background: transparent;
     }
   }
 }
