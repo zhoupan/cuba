@@ -31,13 +31,10 @@
   }
 }
 
-@mixin cuba-flat-checkbox-style($checkbox-size: $v-unit-size) {
-  // Instead of accepting checkbox-size, the valo-checkbox-style mixin divides passed unit-size by 2.
-  // Since we do not want the CheckBox to be half smaller, we need to provide twice the size.
-  @include valo-checkbox-style($unit-size: $checkbox-size * 2);
-
+@mixin cuba-flat-checkbox-style($checkbox-size: $cuba-checkbox-size) {
   color: var(--text-medium-color);
-  height: $checkbox-size;
+  line-height: $checkbox-size;
+  height: $checkbox-size + $cuba-checkbox-extra-height;
 
   :root & {
     padding-left: round($checkbox-size * 1.66);
@@ -53,6 +50,10 @@
     & ~ label:before,
     & ~ label:after {
       border-radius: ceil($v-border-radius / 2);
+      font-size: round($v-font-size * 0.8 * ($checkbox-size * 2 / $v-unit-size));
+      line-height: $checkbox-size;
+      height: round($checkbox-size);
+      width: round($checkbox-size);
     }
 
     &:checked {
@@ -70,7 +71,7 @@
       background: var(--read-only-border-color);
     }
 
-    &:focus:checked  ~ label:before {
+    &:focus:checked ~ label:before {
       border-color: var(--primary-color);
       background: var(--primary-disabled-color);
     }
