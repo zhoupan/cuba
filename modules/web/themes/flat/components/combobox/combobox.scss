@@ -24,7 +24,7 @@
     }
 
     [class$="button"] {
-      color: var(--text-color);
+      color: var(--text-medium-color);
       border-left: 0;
     }
 
@@ -54,7 +54,7 @@
       @include box-shadow(none);
 
       border: 1px solid var(--border-color);
-      color: var(--text-color);
+      color: var(--text-medium-color);
 
       .gwt-MenuItem-selected {
         background: var(--primary-color);

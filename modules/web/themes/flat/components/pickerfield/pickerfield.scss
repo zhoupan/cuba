@@ -32,8 +32,30 @@
     }
 
     .v-filterselect .v-filterselect-button {
-      color: var(--text-color);
+      color: var(--text-medium-color);
       border-color: var(--error-color);
+    }
+  }
+
+  .#{$primary-stylename}.v-disabled {
+    .v-button.#{$primary-stylename}-button {
+      border-color: var(--read-only-border-color);
+      color: var(--read-only-border-color);
+
+      &:hover {
+        border-color: var(--read-only-border-color);
+        color: var(--read-only-border-color);
+      }
+
+      &:active {
+        border-color: var(--read-only-border-color);
+        color: var(--read-only-border-color);
+        background: transparent;
+      }
+
+      &:focus {
+        border-color: var(--read-only-border-color);
+      }
     }
   }
 
@@ -50,6 +72,7 @@
 
   .v-textfield.#{$primary-stylename}-text {
     @include cuba-flat-input-style;
+    background: transparent;
   }
 
   .v-button.#{$primary-stylename}-button {
@@ -57,10 +80,34 @@
     font-size: $font-size;
     width: $pickerfield-size;
     min-width: $pickerfield-size;
+    color: var(--text-medium-color);
+    background: transparent;
+    border-radius: 0;
 
     &:after,
     &:hover:after {
       height: $pickerfield-size;
     }
+
+    &:hover {
+      border-color: var(--border-color);
+      background: transparent;
+      color: var(--secondary-hover-color);
+    }
+
+    &:active {
+      border-color: var(--border-color);
+      background: var(--read-only-color);
+      color: var(--text-medium-color);
+    }
+
+    &:focus {
+      border-color: var(--border-color);
+    }
+  }
+
+  .#{$primary-stylename}-layout > .v-button:last-child {
+    border-top-right-radius: $v-border-radius;
+    border-bottom-right-radius: $v-border-radius;
   }
 }
