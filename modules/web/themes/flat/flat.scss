@@ -24,6 +24,7 @@
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/textfield/textfield";
+@import "components/window/window";
 
 @mixin flat {
   @include halo;
@@ -38,6 +39,7 @@
   @include flat-pickerfield;
   @include flat-radiobuttongroup;
   @include flat-textfield;
+  @include flat-window;
 
   --primary-color: #6F5CC3;
   //--primary-color_rgb: 111, 92, 195;
