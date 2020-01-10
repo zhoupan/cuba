@@ -21,6 +21,7 @@
 @import "components/combobox/combobox";
 @import "components/contextmenu/contextmenu-button";
 @import "components/groupbox/groupbox";
+@import "components/notification/notification";
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/textfield/textfield";
@@ -40,6 +41,7 @@
   @include flat-radiobuttongroup;
   @include flat-textfield;
   @include flat-window;
+  @include flat-notification;
 
   --primary-color: #6F5CC3;
   //--primary-color_rgb: 111, 92, 195;
@@ -50,8 +52,10 @@
 
   //--focus-style: 0 0 6px #{'rgba(var(--primary-color_rgb), 0.15)'};
 
-  --danger-color: #FF647C;              // Warning
-  --error-color: #FF647C;               // Warning
+  --danger-color: #FF647C;              // Danger
+  --error-color: #FF647C;               // Danger
+
+  --warning-color: #FFDA79;             // Warning
 
   --error-hover-color: #FF3151;         // Warning - Hover (d10%)
   --error-active-color: #FD0027;        // Warning - Hover (d10%)
