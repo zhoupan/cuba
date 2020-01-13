@@ -15,7 +15,7 @@
  *
  */
 
-$cuba-button-border-width: 2px;
+$cuba-button-border-width: 2px !default;
 
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
@@ -138,105 +138,66 @@ $cuba-button-border-width: 2px;
 }
 
 @mixin flat-button-default-style() {
-  border-color: var(--secondary-disabled-color);
-  background: var(--secondary-disabled-color);
-  color: var(--text-color);
-
-  &:hover:not(.v-disabled) {
-    border-color: var(--button-default-hover-color);
-    background: var(--button-default-hover-color);
-  }
-
-  &:active:not(.v-disabled) {
-    border-color: var(--button-default-active-color);
-    background: var(--button-default-active-color);
-  }
-
-  &:focus:not(.v-disabled) {
-    border-color: var(--button-default-disabled-color);
-  }
-
+  @include flat-button-color-style($main-color: --secondary-disabled-color,
+                                   $text-color: --text-color,
+                                   $hover-color: --button-default-hover-color,
+                                   $active-color: --button-default-active-color,
+                                   $disabled-color: --button-default-disabled-color);
   &.v-disabled {
-    border-color: var(--button-default-disabled-color);
-    background: var(--button-default-disabled-color);
     color: var(--read-only-border-color);
   }
 }
 
 @mixin flat-button-primary-style() {
-  border-color: var(--primary-color);
-  background: var(--primary-color);
-  color: var(--button-text-color);
-
-  &:hover:not(.v-disabled) {
-    border-color: var(--primary-hover-color);
-    background: var(--primary-hover-color);
-  }
-
-  &:active:not(.v-disabled) {
-    border-color: var(--primary-active-color);
-    background: var(--primary-active-color);
-  }
-
-  &:focus:not(.v-disabled) {
-    border-color: var(--primary-disabled-color);
-  }
-
-  &.v-disabled {
-    border-color: var(--primary-disabled-color);
-    background: var(--primary-disabled-color);
-    color: var(--button-text-color);
-  }
+  @include flat-button-color-style($main-color: --primary-color,
+                                   $text-color: --button-text-color,
+                                   $hover-color: --primary-hover-color,
+                                   $active-color: --primary-active-color,
+                                   $disabled-color: --primary-disabled-color);
 }
 
 @mixin flat-button-friendly-style() {
-  border-color: var(--success-color);
-  background: var(--success-color);
-  color: var(--button-text-color);
-
-  &:hover:not(.v-disabled) {
-    border-color: var(--success-hover-color);
-    background: var(--success-hover-color);
-  }
-
-  &:active:not(.v-disabled) {
-    border-color: var(--success-active-color);
-    background: var(--success-active-color);
-  }
-
-  &:focus:not(.v-disabled) {
-    border-color: var(--success-disabled-color);
-  }
-
-  &.v-disabled {
-    border-color: var(--success-disabled-color);
-    background: var(--success-disabled-color);
-    color: var(--button-text-color);
-  }
+  @include flat-button-color-style($main-color: --success-color,
+                                   $text-color: --button-text-color,
+                                   $hover-color: --success-hover-color,
+                                   $active-color: --success-active-color,
+                                   $disabled-color: --success-disabled-color);
 }
 
 @mixin flat-button-danger-style() {
-  border-color: var(--error-color);
-  background: var(--error-color);
-  color: var(--button-text-color);
+  @include flat-button-color-style($main-color: --error-color,
+                                   $text-color: --button-text-color,
+                                   $hover-color: --error-hover-color,
+                                   $active-color: --error-active-color,
+                                   $disabled-color: --error-disabled-color);
+}
+
+@mixin flat-button-color-style($main-color,
+                               $text-color,
+                               $hover-color,
+                               $active-color,
+                               $disabled-color) {
+  border-color: var($main-color);
+  background: var($main-color);
+  color: var($text-color);
 
   &:hover:not(.v-disabled) {
-    border-color: var(--error-hover-color);
-    background: var(--error-hover-color);
+    border-color: var($hover-color);
+    background: var($hover-color);
   }
 
   &:active:not(.v-disabled) {
-    border-color: var(--error-active-color);
-    background: var(--error-active-color);
+    border-color: var($active-color);
+    background: var($active-color);
   }
 
   &:focus:not(.v-disabled) {
-    border-color: var(--error-disabled-color);
+    border-color: var($disabled-color);
   }
 
   &.v-disabled {
-    border-color: var(--error-disabled-color);
-    background: var(--error-disabled-color);
-    color: var(--button-text-color);
+    border-color: var($disabled-color);
+    background: var($disabled-color);
+    color: var($text-color);
   }
 }
