@@ -19,7 +19,7 @@ $cuba-button-border-width: 2px !default;
 
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
-    @include flat-button-default-style;
+    @include cuba-flat-button-default-style;
 
     border-width: $cuba-button-border-width;
     border-style: solid;
@@ -35,15 +35,15 @@ $cuba-button-border-width: 2px !default;
 
   .#{$primary-stylename}-primary,
   .#{$primary-stylename}.c-primary-action {
-    @include flat-button-primary-style;
+    @include cuba-flat-button-primary-style;
   }
 
   .#{$primary-stylename}-friendly {
-    @include flat-button-friendly-style;
+    @include cuba-flat-button-friendly-style;
   }
 
   .#{$primary-stylename}-danger {
-    @include flat-button-danger-style
+    @include cuba-flat-button-danger-style
   }
 
   .#{$primary-stylename}-link {
@@ -137,8 +137,8 @@ $cuba-button-border-width: 2px !default;
   }
 }
 
-@mixin flat-button-default-style() {
-  @include flat-button-color-style($main-color: --secondary-disabled-color,
+@mixin cuba-flat-button-default-style() {
+  @include cuba-flat-button-color-style($main-color: --secondary-disabled-color,
                                    $text-color: --text-color,
                                    $hover-color: --button-default-hover-color,
                                    $active-color: --button-default-active-color,
@@ -148,31 +148,31 @@ $cuba-button-border-width: 2px !default;
   }
 }
 
-@mixin flat-button-primary-style() {
-  @include flat-button-color-style($main-color: --primary-color,
+@mixin cuba-flat-button-primary-style() {
+  @include cuba-flat-button-color-style($main-color: --primary-color,
                                    $text-color: --button-text-color,
                                    $hover-color: --primary-hover-color,
                                    $active-color: --primary-active-color,
                                    $disabled-color: --primary-disabled-color);
 }
 
-@mixin flat-button-friendly-style() {
-  @include flat-button-color-style($main-color: --success-color,
+@mixin cuba-flat-button-friendly-style() {
+  @include cuba-flat-button-color-style($main-color: --success-color,
                                    $text-color: --button-text-color,
                                    $hover-color: --success-hover-color,
                                    $active-color: --success-active-color,
                                    $disabled-color: --success-disabled-color);
 }
 
-@mixin flat-button-danger-style() {
-  @include flat-button-color-style($main-color: --error-color,
+@mixin cuba-flat-button-danger-style() {
+  @include cuba-flat-button-color-style($main-color: --error-color,
                                    $text-color: --button-text-color,
                                    $hover-color: --error-hover-color,
                                    $active-color: --error-active-color,
                                    $disabled-color: --error-disabled-color);
 }
 
-@mixin flat-button-color-style($main-color,
+@mixin cuba-flat-button-color-style($main-color,
                                $text-color,
                                $hover-color,
                                $active-color,

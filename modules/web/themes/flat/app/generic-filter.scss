@@ -20,7 +20,7 @@
     @if $cuba-filter-friendly-search-button {
       .v-button.filter-search-button,
       .v-button.v-popupbutton {
-        @include flat-button-friendly-style;
+        @include cuba-flat-button-friendly-style;
       }
     }
   }
