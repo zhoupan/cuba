@@ -16,6 +16,7 @@
 
 @import "../halo/halo";
 @import "app/generic-filter";
+@import "app/login-window";
 @import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/combobox/combobox";
@@ -30,8 +31,6 @@
 @mixin flat {
   @include halo;
 
-  @include flat-cuba-generic-filter;
-
   @include flat-button;
   @include flat-checkbox;
   @include flat-combobox;
@@ -42,6 +41,9 @@
   @include flat-textfield;
   @include flat-window;
   @include flat-notification;
+
+  @include flat-cuba-generic-filter;
+  @include flat-login-window;
 
   --primary-color: #6F5CC3;
   //--primary-color_rgb: 111, 92, 195;

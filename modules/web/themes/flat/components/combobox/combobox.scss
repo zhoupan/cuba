@@ -17,8 +17,6 @@
 
 @mixin flat-combobox($primary-stylename: v-filterselect) {
   .#{$primary-stylename} {
-    @include cuba-flat-filterselect-style;
-
     [class*="input"] {
       @include cuba-flat-input-style;
     }
@@ -33,6 +31,8 @@
         @include cuba-flat-input-readonly-style;
       }
     }
+
+    @include cuba-flat-filterselect-size-style;
   }
 
   .#{$primary-stylename}-no-input {
@@ -67,7 +67,7 @@
 
   &.small {
     .#{$primary-stylename} {
-      @include cuba-flat-filterselect-style($v-unit-size--small, $v-font-size--small);
+      @include cuba-flat-filterselect-size-style($v-unit-size--small, $v-font-size--small);
     }
 
     .#{$primary-stylename}-suggestpopup {
@@ -77,7 +77,7 @@
 
   &.large {
     .#{$primary-stylename} {
-      @include cuba-flat-filterselect-style($v-unit-size--large, $v-font-size--large);
+      @include cuba-flat-filterselect-size-style($v-unit-size--large, $v-font-size--large);
     }
 
     .#{$primary-stylename}-suggestpopup {
@@ -86,12 +86,20 @@
   }
 }
 
-@mixin cuba-flat-filterselect-style($unit-size: $v-unit-size, $font-size: $v-font-size) {
+@mixin cuba-flat-filterselect-size-style($unit-size: $v-unit-size, $font-size: $v-font-size) {
   @include valo-combobox-style($unit-size: $unit-size, $bevel: null, $shadow: null, $gradient: null, $border: null, $border-radius: null, $background-color: null, $states: normal);
   font-size: $font-size;
 
   [class$="button"]:before {
     content: "\f0d7";
+  }
+
+  // TODO: gg, refactor, make depends from input styles
+  [class*="input"] {
+    $padding-height: ceil($unit-size/6);
+    $padding-width: ceil($unit-size/3);
+    padding: $padding-height $padding-width;
+    padding-right: round($unit-size * 1) + 1;
   }
 }
 
