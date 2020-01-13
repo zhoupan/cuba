@@ -25,10 +25,10 @@
       font-size: $v-font-size--h3;
       font-weight: 600;
       line-height: $v-line-height;
-      margin-bottom: round($v-unit-size/6);
 
       ~ .#{$primary-stylename}-description {
         line-height: $v-line-height;
+        margin-top: round($v-unit-size/6);
       }
     }
   }
