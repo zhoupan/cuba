@@ -16,10 +16,6 @@
  */
 
 @mixin flat-textfield($primary-stylename: v-textfield) {
-  .#{$primary-stylename}.c-disabled-or-readonly.c-empty-value {
-    color: transparent;
-  }
-
   .#{$primary-stylename} {
     @include cuba-flat-input-style;
   }
@@ -28,36 +24,55 @@
     @include cuba-flat-input-readonly-style;
   }
 
+  .#{$primary-stylename}.v-disabled {
+    @include cuba-flat-input-disabled-style;
+  }
+
+  .#{$primary-stylename}.c-disabled-or-readonly.c-empty-value {
+    color: transparent;
+  }
+
   .#{$primary-stylename}-error,
   .#{$primary-stylename}-error-error {
     @include cuba-flat-input-error-style;
   }
 
   &.small .#{$primary-stylename} {
-    @include valo-textfield-style($unit-size: $v-unit-size--small, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
-    font-size: $v-font-size--small;
+    @include cuba-flat-input-size-style($unit-size: $v-unit-size--small, $font-size: $v-font-size--small);
   }
 
   &.large .#{$primary-stylename} {
-    @include valo-textfield-style($unit-size: $v-unit-size--large, $states: normal, $background-color: null, $border: null, $gradient: null, $bevel: null, $shadow: null);
-    font-size: $v-font-size--large;
+    @include cuba-flat-input-size-style($unit-size: $v-unit-size--large, $font-size: $v-font-size--large);
+  }
+}
+
+@mixin cuba-flat-input-size-style($unit-size: $v-unit-size,
+                                  $padding    : null,
+                                  $font-size  : null) {
+  font-size: $font-size;
+  height: $unit-size;
+
+  @if type-of($padding) == number or type-of($padding) == list {
+    padding: $padding;
+  } @else {
+    $padding-height: ceil($unit-size/6);
+    $padding-width: ceil($unit-size/3);
+    padding: $padding-height $padding-width;
   }
 }
 
 @mixin cuba-flat-input-style() {
-  border: 1px solid var(--border-color);
+  @include cuba-flat-input-size-style();
+
+  border: flat-border();
   color: var(--text-color);
 
-  $padding-height: ceil($v-unit-size/6);
-  $padding-width: ceil($v-unit-size/3);
-  padding: $padding-height $padding-width;
-
   &::placeholder {
-    color: var(--text-medium-color);
+    color: var(--read-only-text-color);
   }
 
   &:focus {
-    @include cuba-flat-input-focus-style;
+    @include flat-focus-style(--primary-color);
   }
 }
 
@@ -67,12 +82,15 @@
   background: var(--read-only-color);
 
   &:focus {
-    border-color: var(--border-color);
+    @include flat-focus-style(--border-color);
   }
 }
 
-@mixin cuba-flat-input-focus-style() {
-  border-color: var(--primary-color);
+@mixin cuba-flat-input-disabled-style() {
+  @include cuba-flat-input-readonly-style();
+
+  color: var(--read-only-text-color);
+  opacity: 1;
 }
 
 @mixin cuba-flat-input-error-style() {
@@ -80,6 +98,6 @@
   background: var(--error-disabled-color);
 
   &:focus {
-    border-color: var(--error-color);
+    @include flat-focus-style(--error-color);
   }
 }

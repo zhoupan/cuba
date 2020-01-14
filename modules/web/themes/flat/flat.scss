@@ -27,6 +27,7 @@
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/textfield/textfield";
 @import "components/window/window";
+@import "util/util";
 
 @mixin flat {
   @include halo;
@@ -46,13 +47,10 @@
   @include flat-login-window;
 
   --primary-color: #6F5CC3;
-  //--primary-color_rgb: 111, 92, 195;
 
   --primary-hover-color: #5440AC;     // Primary - Hover (d10%)
   --primary-disabled-color: #D2CCEC;  // Primary - Disabled (l30%)
   --primary-active-color: #423287;    //
-
-  //--focus-style: 0 0 6px #{'rgba(var(--primary-color_rgb), 0.15)'};
 
   --danger-color: #FF647C;              // Danger
   --error-color: #FF647C;               // Danger
@@ -67,15 +65,12 @@
 
   --read-only-color: #F2F2F2;           // Gray - Hover
   --read-only-border-color: #A0AAC0;    // Gray - Disabled
+  --read-only-text-color: #A0AAC0;      // Gray - Disabled
 
   --text-color: #0A2044;                // Text - Main
   --text-medium-color: #4F5C78;         // Text - Medium
 
   --button-text-color: #FFFFFF;
-
-  //--gray-light-color: #637497;          // Gray - Light
-  //--gray-hover-color: #F2F2F2;          // Gray - Hover
-  //--gray-disabled-color: #A0AAC0;       // Gray - Disabled
 
   --success-color: #36AB80;             // Success
   --success-hover-color: #2A8463;       // Success - Hover (d10%)
