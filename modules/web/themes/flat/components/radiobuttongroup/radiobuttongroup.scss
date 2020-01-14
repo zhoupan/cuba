@@ -16,21 +16,45 @@
 
 @mixin flat-radiobuttongroup($primary-stylename: v-select-optiongroup) {
   .#{$primary-stylename} {
-    @include cuba-flat-radiobuttongroup-style($v-unit-size - 10);
+    @include cuba-flat-radiobuttongroup-style($radiobuttongroup-size: $v-unit-size - 10);
   }
 
   &.small .#{$primary-stylename} {
-    @include cuba-flat-radiobuttongroup-style($v-unit-size--small - 10);
-    font-size: $v-font-size--small;
+    @include cuba-flat-radiobuttongroup-size-style($radiobuttongroup-size: $v-unit-size--small - 10, $font-size: $v-font-size--small);
   }
 
   &.large .#{$primary-stylename} {
-    @include cuba-flat-radiobuttongroup-style($v-unit-size--large - 10);
-    font-size: $v-font-size--large;
+    @include cuba-flat-radiobuttongroup-size-style($radiobuttongroup-size: $v-unit-size--large - 10, $font-size: $v-font-size--large);
   }
 }
 
-@mixin cuba-flat-radiobuttongroup-style($radiobuttongroup-size: $v-unit-size) {
+@mixin cuba-flat-radiobuttongroup-size-style($radiobuttongroup-size: $v-unit-size, $font-size: null) {
+  font-size: $font-size;
+
+  .v-radiobutton {
+    @include cuba-flat-checkbox-size-style($checkbox-size: $radiobuttongroup-size, $font-size: $font-size);
+
+    :root & > input {
+      &:checked ~ label:after {
+        $size: $radiobuttongroup-size - 10;
+        $offset: round(($radiobuttongroup-size - $size) / 2);
+        width: $size;
+        height: $size;
+        top: $offset;
+        left: $offset;
+      }
+
+      & ~ label:before,
+      & ~ label:after {
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+@mixin cuba-flat-radiobuttongroup-style($radiobuttongroup-size: $cuba-checkbox-size, $font-size: null) {
+  @include cuba-flat-radiobuttongroup-size-style($radiobuttongroup-size: $radiobuttongroup-size, $font-size: $font-size);
+
   &.v-readonly .v-radiobutton.v-disabled {
     color: var(--text-medium-color);
   }
@@ -44,12 +68,6 @@
 
     :root & > input {
       &:checked ~ label:after {
-        $size: $radiobuttongroup-size - 10;
-        $offset: round(($radiobuttongroup-size - $size) / 2);
-        width: $size;
-        height: $size;
-        top: $offset;
-        left: $offset;
         background: var(--primary-color);
       }
 
