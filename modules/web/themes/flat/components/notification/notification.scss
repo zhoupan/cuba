@@ -33,6 +33,15 @@
     }
   }
 
+  .#{$primary-stylename}.system {
+    background: var(--text-medium-color);
+    text-align: center;
+
+    .#{$primary-stylename}-caption {
+      text-align: center;
+    }
+  }
+
   .#{$primary-stylename}.tray {
     .#{$primary-stylename}-caption {
       font-size: $v-font-size--h3;
