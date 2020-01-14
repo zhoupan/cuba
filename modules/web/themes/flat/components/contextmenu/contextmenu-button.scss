@@ -16,6 +16,11 @@
  */
 
 @mixin flat-cuba-contextmenu-button($primary-stylename: c-cm-button) {
+  .#{$primary-stylename} {
+    $padding: ceil($v-selection-item-height/3);
+    padding: 0 $padding*2 0 $padding;
+  }
+
   .#{$primary-stylename}.#{$primary-stylename}-selected {
     background: var(--primary-color);
     color: var(--button-text-color);
@@ -37,11 +42,15 @@
     font-size: $v-font-size--small;
     height: $v-selection-item-height--small;
     line-height: $v-selection-item-height--small;
+    $padding: ceil($v-selection-item-height--small/3);
+    padding: 0 $padding*2 0 $padding;
   }
 
   &.large .#{$primary-stylename} {
     font-size: $v-font-size--large;
     height: $v-selection-item-height--large;
     line-height: $v-selection-item-height--large;
+    $padding: ceil($v-selection-item-height--large/3);
+    padding: 0 $padding*2 0 $padding;
   }
 }
