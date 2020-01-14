@@ -76,6 +76,8 @@ $cuba-window-modal-header-height: ceil($v-unit-size * 1.88);
 $cuba-window-modal-header-buttons-line-height: $v-unit-size;
 $cuba-window-modal-header-line-height: $cuba-window-modal-header-height;
 
+$v-disabled-opacity: 1;
+
 /**
  * Whether to enable show/hide animations for dialog windows.
  * @group window

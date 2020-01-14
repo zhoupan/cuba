@@ -27,10 +27,6 @@ $cuba-button-border-width: 2px !default;
     &:after {
       display: none;
     }
-
-    &.v-disabled {
-      opacity: 1;
-    }
   }
 
   .#{$primary-stylename}-primary,
@@ -65,7 +61,6 @@ $cuba-button-border-width: 2px !default;
       border-color: var(--primary-active-color);
       background: transparent;
       color: var(--primary-active-color);
-      opacity: 1;
     }
 
     &.v-disabled {
@@ -87,7 +82,6 @@ $cuba-button-border-width: 2px !default;
 
     &:active:not(.v-disabled) {
       background: transparent;
-      opacity: 1;
     }
 
     &.v-disabled {
@@ -144,7 +138,7 @@ $cuba-button-border-width: 2px !default;
                                    $active-color: --button-default-active-color,
                                    $disabled-color: --button-default-disabled-color);
   &.v-disabled {
-    color: var(--read-only-border-color);
+    color: var(--disabled-text-color);
   }
 }
 
