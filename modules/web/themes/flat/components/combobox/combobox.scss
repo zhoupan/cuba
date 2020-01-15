@@ -35,17 +35,8 @@
 
   .#{$primary-stylename}-suggestpopup {
     [class$="suggestmenu"] {
-      @include cuba-flat-combobox-popup-size-style();
+      @include cuba-flat-selection-overlay-style();
       @include box-shadow(none);
-
-      border: 1px solid var(--border-color);
-      color: var(--text-medium-color);
-
-      .gwt-MenuItem-selected {
-        background: var(--primary-color);
-        color: var(--button-text-color);
-        text-shadow: none;
-      }
     }
   }
 
@@ -54,8 +45,8 @@
       @include cuba-flat-combobox-size-style($unit-size: $v-unit-size--small, $font-size: $v-font-size--small);
     }
 
-    .#{$primary-stylename}-suggestpopup {
-      @include cuba-flat-combobox-popup-size-style($item-height: $v-selection-item-height--small, $font-size: $v-font-size--small)
+    .#{$primary-stylename}-suggestpopup [class$="suggestmenu"] {
+      @include cuba-flat-selection-overlay-size-style($item-height: $v-selection-item-height--small, $font-size: $v-font-size--small)
     }
   }
 
@@ -64,13 +55,13 @@
       @include cuba-flat-combobox-size-style($unit-size: $v-unit-size--large, $font-size: $v-font-size--large);
     }
 
-    .#{$primary-stylename}-suggestpopup {
-      @include cuba-flat-combobox-popup-size-style($item-height: $v-selection-item-height--large, $font-size: $v-font-size--large)
+    .#{$primary-stylename}-suggestpopup [class$="suggestmenu"] {
+      @include cuba-flat-selection-overlay-size-style($item-height: $v-selection-item-height--large, $font-size: $v-font-size--large)
     }
   }
 }
 
-@mixin cuba-flat-combobox-input-size-style($unit-size: $v-unit-size,
+@mixin cuba-flat-combobox-input-size-style($unit-size  : $v-unit-size,
                                            $padding    : null,
                                            $font-size  : null) {
   box-sizing: border-box;
@@ -81,7 +72,7 @@
   border-radius: inherit;
 }
 
-@mixin cuba-flat-combobox-button-size-style($unit-size: $v-unit-size,
+@mixin cuba-flat-combobox-button-size-style($unit-size  : $v-unit-size,
                                             $font-size  : null) {
   width: $unit-size;
   font-size: $font-size;
@@ -95,7 +86,7 @@
   content: "\f0d7";
 }
 
-@mixin cuba-flat-combobox-size-style($unit-size: $v-unit-size,
+@mixin cuba-flat-combobox-size-style($unit-size  : $v-unit-size,
                                      $padding    : null,
                                      $font-size  : null) {
   height: $unit-size;
@@ -111,7 +102,7 @@
   }
 }
 
-@mixin cuba-flat-combobox-style($unit-size: $v-unit-size,
+@mixin cuba-flat-combobox-style($unit-size  : $v-unit-size,
                                 $padding    : null,
                                 $font-size  : null) {
   @include cuba-flat-combobox-size-style($unit-size: $unit-size, $padding: $padding, $font-size: $font-size);
@@ -145,26 +136,6 @@
 
     [class$="button"] {
       color: var(--disabled-text-color);
-    }
-  }
-}
-
-@mixin cuba-flat-combobox-popup-size-style($item-height: $v-selection-item-height,
-                                           $font-size:   $v-font-size,
-                                           $padding      : null) {
-  [class$="suggestmenu"] {
-    font-size: $font-size;
-
-    .gwt-MenuItem {
-      height: $item-height;
-      line-height: $item-height;
-
-      @if type-of($padding) == number or type-of($padding) == list {
-        padding: $padding;
-      } @else {
-        $padding-width: ceil($item-height/3);
-        padding: 0 $padding-width 0 $padding-width;
-      }
     }
   }
 }

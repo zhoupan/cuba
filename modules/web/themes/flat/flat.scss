@@ -21,6 +21,7 @@
 @import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/combobox/combobox";
+@import "components/contextmenu/contextmenu";
 @import "components/contextmenu/contextmenu-button";
 @import "components/groupbox/groupbox";
 @import "components/notification/notification";
@@ -37,6 +38,7 @@
   @include flat-button;
   @include flat-checkbox;
   @include flat-combobox;
+  @include flat-contextmenu;
   @include flat-cuba-contextmenu-button;
   @include flat-groupbox;
   @include flat-notification;
