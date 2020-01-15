@@ -52,9 +52,9 @@ $v-font-size--h3: 17px;
 //$v-layout-spacing-vertical: 10px;
 //$v-layout-spacing-horizontal: 10px;
 
-//$v-table-row-height: 30px;
-//$v-table-header-font-size: 13px;
-//$v-table-cell-padding-horizontal: 7px;
+$v-table-row-height: $v-unit-size;
+$v-table-header-font-size: 13px;
+$v-table-cell-padding-horizontal: 7px;
 
 $v-focus-style: none;
 $v-error-focus-style: none;
@@ -103,7 +103,7 @@ $cuba-sidemenu-userindicator-font-weight: 600;
  * Whether to enable show/hide animations for dialog windows.
  * @group window
  */
-$v-window-animations-enabled: false !default;
+$v-window-animations-enabled: true !default;
 /**
  * Whether to include styles for inverse colored main menu.
  * @group menubar

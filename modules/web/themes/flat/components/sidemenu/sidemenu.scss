@@ -35,23 +35,11 @@
   }
 
   .#{$primary-stylename}-item {
-    text-shadow: none;
-    font-weight: normal;
-
-    .v-ch & span.v-icon {
-      color: var(--text-color);
-    }
-
-    &:focus,
-    &:hover,
-    &.selected {
-      color: var(--primary-color);
-    }
+    @include cuba-flat-item-style();
   }
 
   .#{$primary-stylename}-item-header {
-    color: var(--text-color);
-    font-weight: $cuba-sidemenu-item-font-weight;
+    @include cuba-flat-item-header-style();
 
     //.#{$primary-stylename}-item-badge {
     //  background: transparent;
@@ -60,11 +48,7 @@
   }
 
   .#{$primary-stylename}-item-focused {
-    color: var(--primary-color);
-
-    .v-ch & span.v-icon {
-      color: var(--primary-color);
-    }
+    @include cuba-flat-item-focused-style();
   }
 
   // TODO: gg, is it really exist?
@@ -110,31 +94,43 @@
     }
 
     .#{$primary-stylename}-item {
-      text-shadow: none;
-      font-weight: normal;
-
-      .v-ch & span.v-icon {
-        color: var(--text-color);
-      }
-
-      &:focus,
-      &:hover,
-      &.selected {
-        color: var(--primary-color);
-      }
+      @include cuba-flat-item-style();
     }
 
     .#{$primary-stylename}-item-header {
-      color: var(--text-color);
-      font-weight: $cuba-sidemenu-item-font-weight;
+      @include cuba-flat-item-header-style();
     }
 
     .#{$primary-stylename}-item-focused {
-      color: var(--primary-color);
-
-      .v-ch & span.v-icon {
-        color: var(--primary-color);
-      }
+      @include cuba-flat-item-focused-style();
     }
   }
+}
+
+@mixin cuba-flat-item-style() {
+  text-shadow: none;
+  font-weight: normal;
+
+  .v-ch & span.v-icon {
+    color: var(--text-color);
+  }
+
+  &:focus,
+  &:hover,
+  &.selected {
+    color: var(--primary-color);
+  }
+}
+
+@mixin cuba-flat-item-focused-style() {
+  color: var(--primary-color);
+
+  .v-ch & span.v-icon {
+    color: var(--primary-color);
+  }
+}
+
+@mixin cuba-flat-item-header-style() {
+  color: var(--text-color);
+  font-weight: $cuba-sidemenu-item-font-weight;
 }
