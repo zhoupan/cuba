@@ -34,7 +34,7 @@
   }
 
   .#{$primary-stylename}.system {
-    background: var(--text-medium-color);
+    background-color: #{'rgba(var(--text-medium-color_rgb), .9)'};
     text-align: center;
 
     .#{$primary-stylename}-caption {
