@@ -17,6 +17,7 @@
 @import "../halo/halo";
 @import "app/generic-filter";
 @import "app/login-window";
+@import "app/main-window";
 @import "components/button/button";
 @import "components/checkbox/checkbox";
 @import "components/combobox/combobox";
@@ -25,6 +26,7 @@
 @import "components/notification/notification";
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
+@import "components/sidemenu/sidemenu";
 @import "components/textfield/textfield";
 @import "components/window/window";
 @import "util/util";
@@ -37,14 +39,16 @@
   @include flat-combobox;
   @include flat-cuba-contextmenu-button;
   @include flat-groupbox;
+  @include flat-notification;
   @include flat-pickerfield;
   @include flat-radiobuttongroup;
+  @include flat-cuba-sidemenu;
   @include flat-textfield;
   @include flat-window;
-  @include flat-notification;
 
   @include flat-cuba-generic-filter;
   @include flat-login-window;
+  @include flat-main-window;
 
   --primary-color: #6F5CC3;
 

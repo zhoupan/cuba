@@ -15,7 +15,8 @@
  *
  */
 
-// Vaadin Valo theme defaults
+//$v-app-background-color: #f2f2f2;
+//$v-background-color: lighten($v-app-background-color, 15%);
 
 $v-line-height: 1.35;
 
@@ -78,6 +79,25 @@ $cuba-window-modal-header-font-size: 22px;
 $cuba-window-modal-header-height: ceil($v-unit-size * 1.88);
 $cuba-window-modal-header-buttons-line-height: $v-unit-size;
 $cuba-window-modal-header-line-height: $cuba-window-modal-header-height;
+
+//$cuba-menubar-background-color: rgba(36, 36, 36, 1);
+//$cuba-menubar-border-color: $cuba-menubar-background-color;
+//$cuba-menubar-height: ceil($v-unit-size * 1.4);
+//$cuba-menubar-menuitem-background-selected-color: lighten($cuba-menubar-background-color, 25%);
+//$cuba-menubar-menuitem-border-radius: 0;
+//$cuba-menubar-menuitem-font-weight: 700;
+//$cuba-menubar-submenu-item-font-weight: 700;
+//$cuba-menubar-menuitem-text-selected-color: valo-font-color($cuba-menubar-menuitem-background-selected-color, 0.95);
+//$cuba-menubar-text-color: valo-font-color($cuba-menubar-background-color, 0.7);
+
+$cuba-sidemenu-background-color: #F5F4F6;
+$cuba-sidemenu-item-font-weight: 600;
+$cuba-sidemenu-separate-items: false;
+$cuba-sidemenu-timezone-font-weight: 600;
+$cuba-sidemenu-title-font-size: $v-font-size--h3;
+$cuba-sidemenu-title-font-weight: 600;
+$cuba-sidemenu-title-gradient: false;
+$cuba-sidemenu-userindicator-font-weight: 600;
 
 /**
  * Whether to enable show/hide animations for dialog windows.
