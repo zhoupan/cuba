@@ -37,18 +37,12 @@
     padding-right: $padding;
 
     & > .v-scrollable > .v-layout:first-child {
-      padding-top: 0;
+      padding-top: round($v-unit-size/10);
     }
   }
 
   .#{$primary-stylename}-footer {
     padding-bottom: $padding;
-  }
-
-  .#{$primary-stylename}.c-app-dialog-window {
-    .#{$primary-stylename}-contents > .v-scrollable > .v-layout:first-child {
-      padding-top: round($v-unit-size/10);
-    }
   }
 
   .#{$primary-stylename}-modalitycurtain {

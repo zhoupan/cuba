@@ -29,6 +29,7 @@
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/sidemenu/sidemenu";
 @import "components/textfield/textfield";
+@import "components/tokenlist/tokenlist";
 @import "components/window/window";
 @import "util/util";
 
@@ -46,6 +47,7 @@
   @include flat-radiobuttongroup;
   @include flat-cuba-sidemenu;
   @include flat-textfield;
+  @include flat-cuba-tokenlist;
   @include flat-window;
 
   @include flat-cuba-generic-filter;

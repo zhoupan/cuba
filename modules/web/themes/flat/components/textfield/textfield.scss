@@ -46,7 +46,7 @@
   }
 }
 
-@mixin cuba-flat-input-size-style($unit-size: $v-unit-size,
+@mixin cuba-flat-input-size-style($unit-size  : $v-unit-size,
                                   $padding    : null,
                                   $font-size  : null) {
   font-size: $font-size;

@@ -28,9 +28,7 @@
 
   .#{$primary-stylename}-error,
   .#{$primary-stylename}-error-error {
-    [class*="input"] {
-      @include cuba-flat-input-error-style();
-    }
+    @include cuba-flat-combobox-error-style();
   }
 
   .#{$primary-stylename}-suggestpopup {
@@ -137,5 +135,15 @@
     [class$="button"] {
       color: var(--disabled-text-color);
     }
+  }
+}
+
+@mixin cuba-flat-combobox-error-style() {
+  [class*="input"] {
+    @include cuba-flat-input-error-style();
+  }
+
+  [class$="button"] {
+    color: var(--text-medium-color);
   }
 }
