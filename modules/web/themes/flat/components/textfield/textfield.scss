@@ -68,7 +68,7 @@
   color: var(--text-color);
 
   &::placeholder {
-    color: var(--disabled-text-color);
+    color: var(--text-disabled-color);
   }
 
   &:focus {
@@ -89,7 +89,7 @@
 @mixin cuba-flat-input-disabled-style() {
   @include cuba-flat-input-readonly-style();
 
-  color: var(--disabled-text-color);
+  color: var(--text-disabled-color);
 }
 
 @mixin cuba-flat-input-error-style() {

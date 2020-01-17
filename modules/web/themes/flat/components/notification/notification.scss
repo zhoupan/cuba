@@ -53,11 +53,11 @@
     background: var(--primary-color);
 
     .#{$primary-stylename}-caption {
-      color: var(--read-only-color);
+      color: var(--primary-text-color);
     }
 
     .#{$primary-stylename}-description {
-      color: var(--read-only-color);
+      color: var(--primary-text-color);
     }
   }
 
@@ -77,11 +77,11 @@
     background: var(--error-color);
 
     .#{$primary-stylename}-caption {
-      color: var(--button-text-color);
+      color: var(--error-text-color);
     }
 
     .#{$primary-stylename}-description {
-      color: var(--button-text-color);
+      color: var(--error-text-color);
     }
   }
 

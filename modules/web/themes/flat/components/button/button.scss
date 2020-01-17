@@ -132,45 +132,47 @@ $cuba-button-border-width: 2px !default;
 }
 
 @mixin cuba-flat-button-default-style() {
-  @include cuba-flat-button-color-style($main-color: --secondary-disabled-color,
-                                   $text-color: --text-color,
-                                   $hover-color: --button-default-hover-color,
-                                   $active-color: --button-default-active-color,
-                                   $disabled-color: --button-default-disabled-color);
-  &.v-disabled {
-    color: var(--disabled-text-color);
-  }
+  @include cuba-flat-button-color-style($main-color: --button-default-color,
+                                        $text-color: --text-color,
+                                        $hover-color: --button-default-hover-color,
+                                        $active-color: --button-default-active-color,
+                                        $disabled-color: --button-default-disabled-color,
+                                        $disabled-text-color: --text-disabled-color);
 }
 
 @mixin cuba-flat-button-primary-style() {
   @include cuba-flat-button-color-style($main-color: --primary-color,
-                                   $text-color: --button-text-color,
-                                   $hover-color: --primary-hover-color,
-                                   $active-color: --primary-active-color,
-                                   $disabled-color: --primary-disabled-color);
+                                        $text-color: --primary-text-color,
+                                        $hover-color: --primary-hover-color,
+                                        $active-color: --primary-active-color,
+                                        $disabled-color: --primary-disabled-color,
+                                        $disabled-text-color: --primary-disabled-text-color);
 }
 
 @mixin cuba-flat-button-friendly-style() {
   @include cuba-flat-button-color-style($main-color: --success-color,
-                                   $text-color: --button-text-color,
-                                   $hover-color: --success-hover-color,
-                                   $active-color: --success-active-color,
-                                   $disabled-color: --success-disabled-color);
+                                        $text-color: --success-text-color,
+                                        $hover-color: --success-hover-color,
+                                        $active-color: --success-active-color,
+                                        $disabled-color: --success-disabled-color,
+                                        $disabled-text-color: --success-disabled-text-color);
 }
 
 @mixin cuba-flat-button-danger-style() {
   @include cuba-flat-button-color-style($main-color: --error-color,
-                                   $text-color: --button-text-color,
-                                   $hover-color: --error-hover-color,
-                                   $active-color: --error-active-color,
-                                   $disabled-color: --error-disabled-color);
+                                        $text-color: --error-text-color,
+                                        $hover-color: --error-hover-color,
+                                        $active-color: --error-active-color,
+                                        $disabled-color: --error-disabled-color,
+                                        $disabled-text-color: --error-disabled-text-color);
 }
 
 @mixin cuba-flat-button-color-style($main-color,
-                               $text-color,
-                               $hover-color,
-                               $active-color,
-                               $disabled-color) {
+                                    $text-color,
+                                    $hover-color,
+                                    $active-color,
+                                    $disabled-color,
+                                    $disabled-text-color) {
   border-color: var($main-color);
   background: var($main-color);
   color: var($text-color);
@@ -192,6 +194,6 @@ $cuba-button-border-width: 2px !default;
   &.v-disabled {
     border-color: var($disabled-color);
     background: var($disabled-color);
-    color: var($text-color);
+    color: var($disabled-text-color);
   }
 }

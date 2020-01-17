@@ -40,17 +40,17 @@
   .#{$primary-stylename}.v-disabled {
     .v-button.#{$primary-stylename}-button {
       border-color: var(--read-only-border-color);
-      color: var(--disabled-text-color);
+      color: var(--text-disabled-color);
       background: var(--read-only-color);
 
       &:hover {
         border-color: var(--read-only-border-color);
-        color: var(--disabled-text-color);
+        color: var(--text-disabled-color);
       }
 
       &:active {
         border-color: var(--read-only-border-color);
-        color: var(--disabled-text-color);
+        color: var(--text-disabled-color);
         background: var(--read-only-color);
       }
 

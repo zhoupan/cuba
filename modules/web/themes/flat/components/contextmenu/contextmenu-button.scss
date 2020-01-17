@@ -23,7 +23,7 @@
 
   .#{$primary-stylename}.#{$primary-stylename}-selected {
     background: var(--primary-color);
-    color: var(--button-text-color);
+    color: var(--primary-text-color);
   }
 
   @if $v-selection-item-border-radius == 0 {

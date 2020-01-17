@@ -20,7 +20,7 @@
     @include cuba-flat-tokenlist-size-style();
 
     .#{$primary-stylename}-label {
-      color: var(--button-text-color);
+      color: var(--primary-text-color);
       background-color: var(--primary-color);
 
       border-radius: $v-border-radius;

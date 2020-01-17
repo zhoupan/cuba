@@ -60,7 +60,7 @@
 
 @mixin cuba-flat-selection-item-selected-style() {
   background: var(--primary-color);
-  color: var(--button-text-color);
+  color: var(--primary-text-color);
   text-shadow: none;
 }
 
