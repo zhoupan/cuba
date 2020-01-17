@@ -106,7 +106,7 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
    *           light           *
    *****************************/
 
-  $padding--light: $padding / 2;
+  /*$padding--light: $padding / 2;
 
   .#{$primary-stylename}-light {
     border: 0;
@@ -139,5 +139,5 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
     .#{$primary-stylename}-content {
       padding-left: 0;
     }
-  }
+  }*/
 }
