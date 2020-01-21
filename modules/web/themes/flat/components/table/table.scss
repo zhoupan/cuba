@@ -1,0 +1,237 @@
+/*
+ * Copyright (c) 2008-2016 Haulmont.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ */
+
+@mixin flat-table($primary-stylename: v-table) {
+
+  $table-inner-border: flat-border($color: --read-only-border-color, $strength: $v-table-border-width);
+  $table-outer-border: flat-border($color: --border-color, $strength: $v-table-border-width);
+
+  // TODO: gg, replace?
+  $background-color: $v-table-background-color or valo-table-background-color();
+
+  .#{$primary-stylename} {
+    color: var(--text-medium-color);
+    background: $background-color;
+  }
+
+  .#{$primary-stylename}-header table,
+  .#{$primary-stylename}-footer table,
+  .#{$primary-stylename}-table {
+    -webkit-box-shadow: 0 0 0 $v-table-border-width var(--read-only-border-color);
+    box-shadow: 0 0 0 $v-table-border-width var(--read-only-border-color);
+  }
+
+  .#{$primary-stylename}-body {
+    border: $table-inner-border;
+    border-left-color: var(--border-color);
+    border-right-color: var(--border-color);
+
+    @if $v-table-border-radius > 0 {
+      border-radius: 0 0 $v-table-border-radius $v-table-border-radius;
+    }
+    border-bottom-color: var(--border-color);
+  }
+
+  .#{$primary-stylename}.has-footer .#{$primary-stylename}-body {
+    border-radius: 0;
+    border-bottom-color: var(--read-only-border-color);
+  }
+
+  .#{$primary-stylename}-header-wrap,
+  .#{$primary-stylename}-footer-wrap,
+  .#{$primary-stylename}-header-drag {
+    border: $table-outer-border;
+    background: $background-color;
+    color: var(--text-color);
+  }
+
+  .#{$primary-stylename}-row-odd {
+    background-color: var(--read-only-color);
+  }
+
+  .#{$primary-stylename}-header-wrap {
+    border-bottom: $table-inner-border;
+  }
+
+  .#{$primary-stylename}-footer-wrap {
+    border-top: $table-inner-border;
+  }
+
+  .#{$primary-stylename}-caption-container,
+  .#{$primary-stylename}-header-drag,
+  .#{$primary-stylename}-cell-content {
+    border-left: $table-inner-border;
+  }
+
+  .#{$primary-stylename}-table td {
+    border-top: $table-inner-border;
+  }
+
+  .#{$primary-stylename} [class*="-row"].v-selected {
+    background: var(--primary-color);
+    color: var(--primary-text-color);
+    text-shadow: none;
+
+    + .v-selected {
+      background: var(--primary-color);
+
+      td {
+        border-top-color: var(--primary-color);
+      }
+    }
+
+    .#{$primary-stylename}-cell-content {
+      border-left-color: var(--primary-hover-color);
+    }
+  }
+
+  .#{$primary-stylename}-focus {
+    outline-color: var(--primary-color);
+  }
+
+  @if $cuba-table-highlight-hover-row {
+    .#{$primary-stylename}-row:hover,
+    .#{$primary-stylename}-row-odd:hover {
+      background-color: var(--primary-disabled-color);
+      color: var(--text-medium-color);
+
+      .#{$primary-stylename}-cell-content.boolean-cell-true .#{$primary-stylename}-cell-wrapper,
+      .#{$primary-stylename}-cell-content.boolean-cell-false .#{$primary-stylename}-cell-wrapper {
+        &:before {
+          color: var(--text-medium-color);
+        }
+      }
+    }
+
+    .#{$primary-stylename}-row.v-selected:hover,
+    .#{$primary-stylename}-row-odd.v-selected:hover {
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+
+      .#{$primary-stylename}-cell-content.boolean-cell-true .#{$primary-stylename}-cell-wrapper,
+      .#{$primary-stylename}-cell-content.boolean-cell-false .#{$primary-stylename}-cell-wrapper {
+        &:before {
+          color: var(--primary-text-color);
+        }
+      }
+    }
+  }
+
+  .#{$primary-stylename}-arow {
+    background: $cuba-table-aggregation-background-color;
+    border-top: $table-inner-border;
+    border-left: $table-outer-border;
+    border-right: $table-outer-border;
+  }
+
+  .#{$primary-stylename}-arow-row {
+    border-right: $table-inner-border;
+    color: var(--text-color);
+  }
+
+  .#{$primary-stylename}-footer td {
+    border-left: $table-inner-border;
+  }
+
+  .#{$primary-stylename}-footer-wrap {
+    background: $cuba-table-aggregation-background-color;
+  }
+
+  .#{$primary-stylename}-focus-slot-left,
+  .#{$primary-stylename}-focus-slot-right {
+    border-color: var(--primary-color);
+  }
+
+  .#{$primary-stylename}-cell-content.boolean-cell-true .#{$primary-stylename}-cell-wrapper,
+  .#{$primary-stylename}-cell-content.boolean-cell-false .#{$primary-stylename}-cell-wrapper {
+    &:before {
+      color: var(--text-medium-color);
+    }
+  }
+
+  .v-selected {
+    .#{$primary-stylename}-cell-content.boolean-cell-true .#{$primary-stylename}-cell-wrapper,
+    .#{$primary-stylename}-cell-content.boolean-cell-false .#{$primary-stylename}-cell-wrapper {
+      &:before {
+        color: var(--primary-text-color);
+      }
+    }
+  }
+
+  /* ====== */
+  /*  Size  */
+  /* ====== */
+
+  $table-header-row-height: round($v-table-row-height * 1.5);
+
+  .#{$primary-stylename}-header-wrap .#{$primary-stylename}-caption-container {
+    min-height: $table-header-row-height;
+  }
+
+  .#{$primary-stylename}-header-drag,
+  .#{$primary-stylename}-header-wrap .#{$primary-stylename}-caption-container {
+    $table-header-row-height: round($v-table-row-height * 1.5);
+    $vertical-padding: round(($table-header-row-height - $v-table-header-font-size)/2);
+    padding: $vertical-padding $v-table-cell-padding-horizontal $vertical-padding - $v-table-border-width;
+  }
+
+  .#{$primary-stylename}-resizer {
+    height: $table-header-row-height;
+  }
+
+  .#{$primary-stylename}-header-cell-asc .#{$primary-stylename}-sort-indicator,
+  .#{$primary-stylename}-header-cell-desc .#{$primary-stylename}-sort-indicator {
+    height: $table-header-row-height;
+    line-height: $table-header-row-height;
+  }
+
+  .#{$primary-stylename}-column-selector {
+    @include cuba-flat-control-button-style($table-header-row-height)
+  }
+
+  .c-table-prefs-icon {
+    @include cuba-flat-control-button-style($table-header-row-height)
+  }
+
+  .#{$primary-stylename}.collapsing-allowed .c-table-prefs-icon {
+    right: 2 * round($table-header-row-height/2);
+  }
+
+  // TODO: gg, possibly move to halo
+  //  as it can be a proper fix if $v-table-cell-padding-horizontal has value other than 7px
+  .c-grouptable-group-divider-header .#{$primary-stylename}-caption-container,
+  .c-grouptable-group-divider .#{$primary-stylename}-cell-wrapper {
+    padding: 0;
+  }
+}
+
+@mixin cuba-flat-control-button-style($row-height) {
+  @include cuba-flat-button-default-style();
+  @include cuba-flat-button-borderless-style($active-color: --primary-active-color);
+  @include cuba-flat-control-button-size-style($row-height);
+
+  font-size: round($row-height/3);
+  border: 0;
+}
+
+@mixin cuba-flat-control-button-size-style($row-height) {
+  top: round($row-height/2) - round($row-height/4);
+  right: round($row-height/2) - round($row-height/4);
+  height: round($row-height/2);
+  line-height: round($row-height/2);
+  width: round($row-height/2);
+}

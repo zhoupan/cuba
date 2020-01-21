@@ -52,9 +52,13 @@ $v-layout-margin-bottom: 12px;
 $v-layout-spacing-vertical: 12px;
 $v-layout-spacing-horizontal: 12px;
 
+$v-table-border-radius: 8px;
 $v-table-row-height: $v-unit-size;
-$v-table-header-font-size: 13px;
-$v-table-cell-padding-horizontal: 7px;
+$v-table-header-font-size: $v-font-size;
+$v-table-cell-padding-horizontal: 16px;
+
+$cuba-table-highlight-hover-row: true;
+$cuba-table-header-font-weight: 600;
 
 $v-focus-style: none;
 $v-error-focus-style: none;
@@ -115,10 +119,6 @@ $v-window-animations-enabled: true !default;
  * @group field
  */
 $v-show-required-indicators: false !default;
-/**
- * The background color of hovered item.
- */
-//$cuba-hover-color: #d3eaf8 !default;
 /**
  * Enables custom colored scrollbars for webkit/blink browsers.
  * @group scrollbar

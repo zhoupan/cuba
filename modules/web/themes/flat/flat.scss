@@ -28,6 +28,7 @@
 @import "components/pickerfield/pickerfield";
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/sidemenu/sidemenu";
+@import "components/table/table";
 @import "components/textfield/textfield";
 @import "components/tokenlist/tokenlist";
 @import "components/window/window";
@@ -46,6 +47,7 @@
   @include flat-pickerfield;
   @include flat-radiobuttongroup;
   @include flat-cuba-sidemenu;
+  @include flat-table;
   @include flat-textfield;
   @include flat-cuba-tokenlist;
   @include flat-window;

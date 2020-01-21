@@ -20,13 +20,6 @@ $cuba-button-border-width: 2px !default;
 @mixin flat-button($primary-stylename: v-button) {
   .#{$primary-stylename} {
     @include cuba-flat-button-default-style;
-
-    border-width: $cuba-button-border-width;
-    border-style: solid;
-
-    &:after {
-      display: none;
-    }
   }
 
   .#{$primary-stylename}-primary,
@@ -70,49 +63,15 @@ $cuba-button-border-width: 2px !default;
     }
   }
 
-  .#{$primary-stylename}-borderless,
-  .#{$primary-stylename}-borderless-colored {
-    border-color: transparent;
-    background: transparent;
-
-    &:hover:not(.v-disabled) {
-      border-color: transparent;
-      background: transparent;
-    }
-
-    &:active:not(.v-disabled) {
-      background: transparent;
-    }
-
-    &.v-disabled {
-      border-color: transparent;
-      background: transparent;
-    }
-  }
-
   .#{$primary-stylename}-borderless {
-    &:focus:not(.v-disabled) {
-      border-color: var(--button-default-disabled-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--button-default-active-color);
-    }
+    @include cuba-flat-button-borderless-style();
   }
 
   .#{$primary-stylename}-borderless-colored {
-    &:hover:not(.v-disabled) {
-      color: var(--text-color);
-    }
-
-    &:focus:not(.v-disabled) {
-      border-color: var(--primary-disabled-color);
-    }
-
-    &:active:not(.v-disabled) {
-      border-color: var(--primary-active-color);
-      color: var(--primary-active-color);
-    }
+    @include cuba-flat-button-borderless-style($main-color: --primary-color,
+                                               $hover-color: --primary-hover-color,
+                                               $active-color: --primary-active-color,
+                                               $disabled-color: --primary-disabled-color);
   }
 
   .#{$primary-stylename}-quiet {
@@ -138,6 +97,13 @@ $cuba-button-border-width: 2px !default;
                                         $active-color: --button-default-active-color,
                                         $disabled-color: --button-default-disabled-color,
                                         $disabled-text-color: --text-disabled-color);
+
+  border-width: $cuba-button-border-width;
+  border-style: solid;
+
+  &:after {
+    display: none;
+  }
 }
 
 @mixin cuba-flat-button-primary-style() {
@@ -195,5 +161,37 @@ $cuba-button-border-width: 2px !default;
     border-color: var($disabled-color);
     background: var($disabled-color);
     color: var($disabled-text-color);
+  }
+}
+
+@mixin cuba-flat-button-borderless-style($main-color: --text-color,
+                                         $hover-color: --text-color,
+                                         $active-color: --text-color,
+                                         $disabled-color: --text-disabled-color) {
+  color: var($main-color);
+  border-color: transparent;
+  background: transparent;
+
+  &:hover:not(.v-disabled) {
+    color: var($hover-color);
+    border-color: transparent;
+    background: transparent;
+  }
+
+  &:focus:not(.v-disabled) {
+    border-color: var($disabled-color);
+  }
+
+  &:active:not(.v-disabled) {
+    color: var($active-color);
+    border-color: var($active-color);
+    background: transparent;
+    @include opacity(1);
+  }
+
+  &.v-disabled {
+    color: var($disabled-color);
+    border-color: transparent;
+    background: transparent;
   }
 }
