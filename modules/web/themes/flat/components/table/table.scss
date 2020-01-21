@@ -16,6 +16,23 @@
  */
 
 @mixin flat-table($primary-stylename: v-table) {
+  @include cuba-flat-table-style();
+
+  &.small .#{$primary-stylename} {
+    @include cuba-flat-table-size-style($row-height: $v-table-row-height--small,
+    $font-size: $v-font-size--small,
+    $header-font-size: $v-table-header-font-size--small);
+  }
+
+  &.large .#{$primary-stylename} {
+    @include cuba-flat-table-size-style($row-height: $v-table-row-height--large,
+    $font-size: $v-font-size--large,
+    $header-font-size: $v-table-header-font-size--large);
+  }
+}
+
+@mixin cuba-flat-table-style($primary-stylename: v-table) {
+  @include cuba-flat-table-size-style($primary-stylename: $primary-stylename);
 
   $table-inner-border: flat-border($color: --read-only-border-color, $strength: $v-table-border-width);
   $table-outer-border: flat-border($color: --border-color, $strength: $v-table-border-width);
@@ -172,25 +189,71 @@
     }
   }
 
-  /* ====== */
-  /*  Size  */
-  /* ====== */
+  .#{$primary-stylename}-row-drag-bottom td.#{$primary-stylename}-cell-content {
+    border-bottom: flat-border($strength: 2px);
+  }
 
-  $table-header-row-height: round($v-table-row-height * 1.5);
+  .#{$primary-stylename}-row-drag-top td.#{$primary-stylename}-cell-content {
+    border-top: flat-border($strength: 2px);
+  }
+
+  .#{$primary-stylename}-column-selector {
+    @include cuba-flat-control-button-style()
+  }
+
+  .c-table-prefs-icon {
+    @include cuba-flat-control-button-style()
+  }
+
+  // TODO: gg, possibly move to halo
+  //  as it can be a proper fix if $v-table-cell-padding-horizontal has value other than 7px
+  .c-grouptable-group-divider .#{$primary-stylename}-cell-wrapper,
+  .#{$primary-stylename}-cell-content-c-grouptable-group-divider .#{$primary-stylename}-cell-wrapper,
+  .c-grouptable-group-divider-header .#{$primary-stylename}-caption-container,
+  .c-grouptable-group-divider-footer .#{$primary-stylename}-footer-container {
+    padding: 0;
+  }
+}
+
+@mixin cuba-flat-table-size-style($primary-stylename: v-table,
+                                  $row-height: $v-table-row-height,
+                                  $font-size: $v-font-size,
+                                  $header-font-size: $v-table-header-font-size) {
+  $table-header-row-height: round($row-height * 1.5);
+
+  .#{$primary-stylename}-header-wrap,
+  .#{$primary-stylename}-footer-wrap,
+  .#{$primary-stylename}-header-drag {
+    font-size: $header-font-size;
+  }
 
   .#{$primary-stylename}-header-wrap .#{$primary-stylename}-caption-container {
     min-height: $table-header-row-height;
   }
 
+  .#{$primary-stylename}-footer-container {
+    min-height: $row-height;
+    $vertical-padding: round(($row-height - $header-font-size)/2);
+    padding: $vertical-padding - $v-table-border-width $v-table-cell-padding-horizontal $vertical-padding;
+  }
+
+  .c-grouptable-group-divider-footer .#{$primary-stylename}-footer-container {
+    padding: 0;
+  }
+
   .#{$primary-stylename}-header-drag,
   .#{$primary-stylename}-header-wrap .#{$primary-stylename}-caption-container {
-    $table-header-row-height: round($v-table-row-height * 1.5);
-    $vertical-padding: round(($table-header-row-height - $v-table-header-font-size)/2);
+    $vertical-padding: round(($table-header-row-height - $header-font-size)/2);
     padding: $vertical-padding $v-table-cell-padding-horizontal $vertical-padding - $v-table-border-width;
   }
 
   .#{$primary-stylename}-resizer {
     height: $table-header-row-height;
+  }
+
+  .#{$primary-stylename}-cell-content {
+    font-size: $font-size;
+    height: $row-height;
   }
 
   .#{$primary-stylename}-header-cell-asc .#{$primary-stylename}-sort-indicator,
@@ -199,32 +262,38 @@
     line-height: $table-header-row-height;
   }
 
+  .#{$primary-stylename}-row-drag-bottom td.#{$primary-stylename}-cell-content {
+    height: $row-height - 2px;
+  }
+
+  .#{$primary-stylename}-row-drag-top td.#{$primary-stylename}-cell-content {
+    height: $row-height - 2px + $v-table-border-width;
+  }
+
   .#{$primary-stylename}-column-selector {
-    @include cuba-flat-control-button-style($table-header-row-height)
+    @include cuba-flat-control-button-size-style($table-header-row-height)
   }
 
   .c-table-prefs-icon {
-    @include cuba-flat-control-button-style($table-header-row-height)
+    @include cuba-flat-control-button-size-style($table-header-row-height)
   }
 
   .#{$primary-stylename}.collapsing-allowed .c-table-prefs-icon {
     right: 2 * round($table-header-row-height/2);
   }
 
-  // TODO: gg, possibly move to halo
-  //  as it can be a proper fix if $v-table-cell-padding-horizontal has value other than 7px
-  .c-grouptable-group-divider-header .#{$primary-stylename}-caption-container,
-  .c-grouptable-group-divider .#{$primary-stylename}-cell-wrapper {
-    padding: 0;
+  .#{$primary-stylename}-cell-content.boolean-cell-true .#{$primary-stylename}-cell-wrapper,
+  .#{$primary-stylename}-cell-content.boolean-cell-false .#{$primary-stylename}-cell-wrapper {
+    &:before {
+      font-size: $font-size;
+    }
   }
 }
 
-@mixin cuba-flat-control-button-style($row-height) {
+@mixin cuba-flat-control-button-style() {
   @include cuba-flat-button-default-style();
   @include cuba-flat-button-borderless-style($active-color: --primary-active-color);
-  @include cuba-flat-control-button-size-style($row-height);
 
-  font-size: round($row-height/3);
   border: 0;
 }
 
@@ -234,4 +303,6 @@
   height: round($row-height/2);
   line-height: round($row-height/2);
   width: round($row-height/2);
+
+  font-size: round($row-height/3);
 }

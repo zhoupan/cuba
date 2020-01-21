@@ -53,8 +53,15 @@ $v-layout-spacing-vertical: 12px;
 $v-layout-spacing-horizontal: 12px;
 
 $v-table-border-radius: 8px;
+
 $v-table-row-height: $v-unit-size;
+$v-table-row-height--small: $v-unit-size--small;
+$v-table-row-height--large: $v-unit-size--large;
+
 $v-table-header-font-size: $v-font-size;
+$v-table-header-font-size--small: $v-font-size--small;
+$v-table-header-font-size--large: $v-font-size--large;
+
 $v-table-cell-padding-horizontal: 16px;
 
 $cuba-table-highlight-hover-row: true;
