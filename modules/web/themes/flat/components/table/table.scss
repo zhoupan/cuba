@@ -22,12 +22,28 @@ $cuba-table-header-row-height-scale: 1.5 !default;
     @include cuba-flat-table-style();
   }
 
-  &.small .#{$primary-stylename} {
-    @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--small, $font-size: $v-font-size--small, $header-font-size: $v-table-header-font-size--small);
+  .c-table-contextmenu {
+    @include cuba-flat-selection-overlay-style($item-stylename: c-table-contextmenu-item);
   }
 
-  &.large .#{$primary-stylename} {
-    @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--large, $font-size: $v-font-size--large, $header-font-size: $v-table-header-font-size--large);
+  &.small {
+    .#{$primary-stylename} {
+      @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--small, $font-size: $v-font-size--small, $header-font-size: $v-table-header-font-size--small);
+    }
+
+    .c-table-contextmenu {
+      @include cuba-flat-selection-overlay-size-style($item-height: $v-selection-item-height--large, $font-size: $v-font-size--large, $item-stylename: c-table-contextmenu-item);
+    }
+  }
+
+  &.large {
+    .#{$primary-stylename} {
+      @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--large, $font-size: $v-font-size--large, $header-font-size: $v-table-header-font-size--large);
+    }
+
+    .c-table-contextmenu {
+      @include cuba-flat-selection-overlay-size-style($item-height: $v-selection-item-height--large, $font-size: $v-font-size--large, $item-stylename: c-table-contextmenu-item);
+    }
   }
 }
 
