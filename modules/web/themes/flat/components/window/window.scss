@@ -18,11 +18,16 @@
 @mixin flat-window($primary-stylename: v-window) {
   $padding: round($v-unit-size/1.4);
 
+  .#{$primary-stylename} {
+    color: var(--text-medium-color);
+  }
+
   .#{$primary-stylename}-outerheader {
     border-bottom: none;
 
     .#{$primary-stylename}-header {
       padding-left: $padding;
+      color: var(--text-color);
     }
 
     .#{$primary-stylename}-closebox,
