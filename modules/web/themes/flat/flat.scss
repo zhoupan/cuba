@@ -15,6 +15,7 @@
  */
 
 @import "../halo/halo";
+@import "app/global";
 @import "app/generic-filter";
 @import "app/login-window";
 @import "app/main-window";
@@ -37,6 +38,8 @@
 
 @mixin flat {
   @include halo;
+
+  @include flat-common;
 
   @include flat-button;
   @include flat-checkbox;
