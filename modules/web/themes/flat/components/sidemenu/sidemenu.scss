@@ -119,6 +119,10 @@
   &:hover,
   &.selected {
     color: var(--primary-color);
+
+    .v-ch & span.v-icon {
+      color: var(--primary-color);
+    }
   }
 }
 
