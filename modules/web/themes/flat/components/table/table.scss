@@ -15,19 +15,19 @@
  *
  */
 
+$cuba-table-header-row-height-scale: 1.5 !default;
+
 @mixin flat-table($primary-stylename: v-table) {
-  @include cuba-flat-table-style();
+  .#{$primary-stylename} {
+    @include cuba-flat-table-style();
+  }
 
   &.small .#{$primary-stylename} {
-    @include cuba-flat-table-size-style($row-height: $v-table-row-height--small,
-    $font-size: $v-font-size--small,
-    $header-font-size: $v-table-header-font-size--small);
+    @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--small, $font-size: $v-font-size--small, $header-font-size: $v-table-header-font-size--small);
   }
 
   &.large .#{$primary-stylename} {
-    @include cuba-flat-table-size-style($row-height: $v-table-row-height--large,
-    $font-size: $v-font-size--large,
-    $header-font-size: $v-table-header-font-size--large);
+    @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--large, $font-size: $v-font-size--large, $header-font-size: $v-table-header-font-size--large);
   }
 }
 
@@ -40,10 +40,8 @@
   // TODO: gg, replace?
   $background-color: $v-table-background-color or valo-table-background-color();
 
-  .#{$primary-stylename} {
-    color: var(--text-medium-color);
-    background: $background-color;
-  }
+  color: var(--text-medium-color);
+  background: $background-color;
 
   .#{$primary-stylename}-header table,
   .#{$primary-stylename}-footer table,
@@ -98,7 +96,7 @@
     border-top: $table-inner-border;
   }
 
-  .#{$primary-stylename} [class*="-row"].v-selected {
+  [class*="-row"].v-selected {
     background: var(--primary-color);
     color: var(--primary-text-color);
     text-shadow: none;
@@ -219,7 +217,7 @@
                                   $row-height: $v-table-row-height,
                                   $font-size: $v-font-size,
                                   $header-font-size: $v-table-header-font-size) {
-  $table-header-row-height: round($row-height * 1.5);
+  $table-header-row-height: round($row-height * $cuba-table-header-row-height-scale);
 
   .#{$primary-stylename}-header-wrap,
   .#{$primary-stylename}-footer-wrap,
@@ -256,10 +254,13 @@
     height: $row-height;
   }
 
-  .#{$primary-stylename}-header-cell-asc .#{$primary-stylename}-sort-indicator,
-  .#{$primary-stylename}-header-cell-desc .#{$primary-stylename}-sort-indicator {
-    height: $table-header-row-height;
-    line-height: $table-header-row-height;
+  .#{$primary-stylename}-header-cell.#{$primary-stylename}-header-sortable,
+  .#{$primary-stylename}-header-cell-asc,
+  .#{$primary-stylename}-header-cell-desc {
+    .#{$primary-stylename}-sort-indicator {
+      height: $table-header-row-height;
+      line-height: $table-header-row-height;
+    }
   }
 
   .#{$primary-stylename}-row-drag-bottom td.#{$primary-stylename}-cell-content {
@@ -287,6 +288,60 @@
     &:before {
       font-size: $font-size;
     }
+  }
+
+  &.v-treetable {
+    @include cuba-flat-treetable-size-style($primary-stylename: v-treetable, $row-height: $row-height, $font-size: $font-size, $header-font-size: $header-font-size);
+  }
+}
+
+@mixin cuba-flat-treetable-size-style($primary-stylename: v-treetable,
+                                      $row-height: $v-table-row-height,
+                                      $font-size: $v-font-size,
+                                      $header-font-size: $v-table-header-font-size) {
+  $table-header-row-height: round($row-height * $cuba-table-header-row-height-scale);
+
+  [class*="caption-container"],
+  [class*="footer-container"],
+  [class*="cell-wrapper"] {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  [class*="caption-container"],
+  [class*="footer-container"] {
+    $vertical-padding: round(($table-header-row-height - $header-font-size)/2);
+    min-height: $table-header-row-height - $vertical-padding - ($vertical-padding - $v-table-border-width);
+  }
+
+  [class*="cell-wrapper"] {
+    min-height: $font-size;
+  }
+
+  [class*="caption-container"] {
+    padding-left: $v-table-cell-padding-horizontal;
+  }
+
+  [class*="caption-container-align-right"] {
+    padding-left: $v-table-cell-padding-horizontal + $v-table-resizer-width;
+  }
+
+  [class*="footer-container"] {
+    padding-right: $v-table-cell-padding-horizontal;
+  }
+
+  [class*="cell-content"] {
+    padding-left: $v-table-cell-padding-horizontal;
+    padding-right: $v-table-cell-padding-horizontal;
+
+    &:first-child {
+      padding-left: $v-table-cell-padding-horizontal + $v-table-border-width;
+    }
+  }
+
+  .#{$primary-stylename}-treespacer {
+    width: round($row-height/2) !important;
+    margin-left: round($row-height/-2) - round($v-table-cell-padding-horizontal/2);
   }
 }
 
