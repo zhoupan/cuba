@@ -30,6 +30,7 @@
 @import "components/sidemenu/sidemenu";
 @import "components/table/table";
 @import "components/textfield/textfield";
+@import "components/textarea/textarea";
 @import "components/tokenlist/tokenlist";
 @import "components/window/window";
 @import "util/util";
@@ -49,6 +50,7 @@
   @include flat-cuba-sidemenu;
   @include flat-table;
   @include flat-textfield;
+  @include flat-textarea;
   @include flat-cuba-tokenlist;
   @include flat-window;
 
