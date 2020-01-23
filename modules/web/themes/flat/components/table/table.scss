@@ -295,7 +295,7 @@ $cuba-table-header-row-height-scale: 1.5 !default;
     @include cuba-flat-control-button-size-style($table-header-row-height)
   }
 
-  .#{$primary-stylename}.collapsing-allowed .c-table-prefs-icon {
+  &.collapsing-allowed .c-table-prefs-icon {
     right: 2 * round($table-header-row-height/2);
   }
 

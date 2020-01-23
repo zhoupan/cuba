@@ -27,6 +27,7 @@
 @import "components/groupbox/groupbox";
 @import "components/notification/notification";
 @import "components/pickerfield/pickerfield";
+@import "components/popupbutton/popupbutton";
 @import "components/radiobuttongroup/radiobuttongroup";
 @import "components/sidemenu/sidemenu";
 @import "components/table/table";
@@ -45,10 +46,12 @@
   @include flat-checkbox;
   @include flat-combobox;
   @include flat-contextmenu;
+  @include flat-cuba-contextmenu;
   @include flat-cuba-contextmenu-button;
   @include flat-groupbox;
   @include flat-notification;
   @include flat-pickerfield;
+  @include flat-popupbutton;
   @include flat-radiobuttongroup;
   @include flat-cuba-sidemenu;
   @include flat-table;

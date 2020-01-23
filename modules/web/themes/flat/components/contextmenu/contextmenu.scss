@@ -31,9 +31,14 @@
 
 @mixin cuba-flat-selection-overlay-style($item-stylename: gwt-MenuItem) {
   @include cuba-flat-selection-overlay-size-style();
+  @include box-shadow($v-window-shadow);
 
-  border: flat-border();
   color: var(--text-medium-color);
+
+  table {
+    border-radius: $v-overlay-border-radius;
+    overflow: hidden;
+  }
 
   .#{$item-stylename} {
     @include cuba-flat-selection-item-size-style();
@@ -73,5 +78,11 @@
 
   .#{$item-stylename} {
     @include cuba-flat-selection-item-size-style($item-height: $item-height, $font-size: $font-size, $padding: $padding);
+  }
+}
+
+@mixin flat-cuba-contextmenu($primary-stylename: c-cm-container) {
+  .#{$primary-stylename} {
+    @include box-shadow($v-window-shadow);
   }
 }

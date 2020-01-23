@@ -17,40 +17,60 @@
 
 @mixin flat-cuba-contextmenu-button($primary-stylename: c-cm-button) {
   .#{$primary-stylename} {
-    $padding: ceil($v-selection-item-height/3);
-    padding: 0 $padding*2 0 $padding;
+    @include cuba-flat-button-borderless-style($main-color: --text-medium-color);
+    @include cuba-flat-contextmenu-button-size-style();
+    border: 0;
+
+    //$padding: ceil($v-selection-item-height/3);
+    //padding: 0 $padding*2 0 $padding;
+
+    background: transparent;
   }
 
+  .#{$primary-stylename}.#{$primary-stylename}:hover,
   .#{$primary-stylename}.#{$primary-stylename}-selected {
     background: var(--primary-color);
     color: var(--primary-text-color);
   }
 
+  .#{$primary-stylename},
+  .#{$primary-stylename}:hover,
+  .#{$primary-stylename}-selected {
+    &.v-disabled {
+      color: var(--text-disabled-color);
+      background: transparent;
+    }
+  }
+
   @if $v-selection-item-border-radius == 0 {
-    .#{$primary-stylename}:first-child {
+    .#{$primary-stylename}:first-child:not(.v-button),
+    .v-slot-#{$primary-stylename}:first-child .#{$primary-stylename} {
       border-top-left-radius: $v-border-radius;
       border-top-right-radius: $v-border-radius;
     }
 
-    .#{$primary-stylename}:last-child {
+    .#{$primary-stylename}:last-child:not(.v-button),
+    .v-slot-#{$primary-stylename}:last-child .#{$primary-stylename} {
       border-bottom-left-radius: $v-border-radius;
       border-bottom-right-radius: $v-border-radius;
     }
   }
 
   &.small .#{$primary-stylename} {
-    font-size: $v-font-size--small;
-    height: $v-selection-item-height--small;
-    line-height: $v-selection-item-height--small;
-    $padding: ceil($v-selection-item-height--small/3);
-    padding: 0 $padding*2 0 $padding;
+    @include cuba-flat-contextmenu-button-size-style($height: $v-selection-item-height--small, $font-size: $v-font-size--small);
   }
 
   &.large .#{$primary-stylename} {
-    font-size: $v-font-size--large;
-    height: $v-selection-item-height--large;
-    line-height: $v-selection-item-height--large;
-    $padding: ceil($v-selection-item-height--large/3);
-    padding: 0 $padding*2 0 $padding;
+    @include cuba-flat-contextmenu-button-size-style($height: $v-selection-item-height--large, $font-size: $v-font-size--large);
   }
+}
+
+@mixin cuba-flat-contextmenu-button-size-style($height    : $v-selection-item-height,
+                                               $font-size : $v-font-size) {
+  font-size: $font-size;
+  height: $height;
+  line-height: $height;
+  $padding: ceil($height/3);
+  padding: 0 $padding*2 0 $padding;
+  border-radius: 0;
 }
