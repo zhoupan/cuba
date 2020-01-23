@@ -55,6 +55,10 @@ $cuba-groupbox-caption-height--large: round($v-unit-size--large * 1.4);
     }
   }
 
+  .#{$primary-stylename}-nocaption > .#{$primary-stylename}-content {
+    border: none;
+  }
+
   .#{$primary-stylename}-content {
     border: 0;
     padding: 0 $padding $padding 0;
