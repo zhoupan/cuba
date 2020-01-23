@@ -26,6 +26,16 @@ $cuba-table-header-row-height-scale: 1.5 !default;
     @include cuba-flat-selection-overlay-style($item-stylename: c-table-contextmenu-item);
   }
 
+  .c-table-prefs-editor {
+    @include box-shadow($v-window-shadow);
+
+    color: var(--text-medium-color);
+
+    .c-table-prefs-title {
+      border-bottom-color: var(--read-only-border-color);
+    }
+  }
+
   &.small {
     .#{$primary-stylename} {
       @include cuba-flat-table-size-style($primary-stylename: $primary-stylename, $row-height: $v-table-row-height--small, $font-size: $v-font-size--small, $header-font-size: $v-table-header-font-size--small);
