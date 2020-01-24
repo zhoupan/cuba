@@ -19,7 +19,7 @@ $cuba-table-header-row-height-scale: 1.5 !default;
 
 @mixin flat-table($primary-stylename: v-table) {
   .#{$primary-stylename} {
-    @include cuba-flat-table-style();
+    @include cuba-flat-table-style($primary-stylename: $primary-stylename);
   }
 
   .c-table-contextmenu {
