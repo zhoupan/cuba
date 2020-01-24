@@ -53,9 +53,10 @@ $cuba-login-form-width--small: $cuba-login-form-width * $v-scaling-factor--small
 $cuba-login-form-width--large: $cuba-login-form-width * $v-scaling-factor--large;
 
 @mixin flat-login-window {
+  @include cuba-flat-login-window-size-style();
 
   .c-login-panel {
-    border: 1px solid var(--border-color);
+    border: flat-border();
   }
 
   .c-login-username {
@@ -72,46 +73,46 @@ $cuba-login-form-width--large: $cuba-login-form-width * $v-scaling-factor--large
   }
 
   &.small {
-    @include cuba-flat-login-window-size-style($login-form-width: $cuba-login-form-width--small,
-                                          $login-panel-padding: $cuba-login-panel-padding--small,
-                                          $login-logo-height: $cuba-login-logo-height--small,
-                                          $login-caption-font-size: $cuba-login-caption-font-size--small,
-                                          $login-caption-font-weight: $cuba-login-caption-font-weight--small,
-                                          $login-username-height: $cuba-login-username-height--small,
-                                          $login-password-height: $cuba-login-password-height--small,
-                                          $login-btn-font-weight: $cuba-login-btn-font-weight--small,
-                                          $login-btn-height: $cuba-login-btn-height--small,
-                                          $login-btn-width: $cuba-login-btn-width--small);
+    @include cuba-flat-login-window-size-style($login-form-width          : $cuba-login-form-width--small,
+                                               $login-panel-padding       : $cuba-login-panel-padding--small,
+                                               $login-logo-height         : $cuba-login-logo-height--small,
+                                               $login-caption-font-size   : $cuba-login-caption-font-size--small,
+                                               $login-caption-font-weight : $cuba-login-caption-font-weight--small,
+                                               $login-username-height     : $cuba-login-username-height--small,
+                                               $login-password-height     : $cuba-login-password-height--small,
+                                               $login-btn-font-weight     : $cuba-login-btn-font-weight--small,
+                                               $login-btn-height          : $cuba-login-btn-height--small,
+                                               $login-btn-width           : $cuba-login-btn-width--small);
   }
 
   &.large {
-    @include cuba-flat-login-window-size-style($login-form-width: $cuba-login-form-width--large,
-                                          $login-panel-padding: $cuba-login-panel-padding--large,
-                                          $login-logo-height: $cuba-login-logo-height--large,
-                                          $login-caption-font-size: $cuba-login-caption-font-size--large,
-                                          $login-caption-font-weight: $cuba-login-caption-font-weight--large,
-                                          $login-username-height: $cuba-login-username-height--large,
-                                          $login-password-height: $cuba-login-password-height--large,
-                                          $login-btn-font-weight: $cuba-login-btn-font-weight--large,
-                                          $login-btn-height: $cuba-login-btn-height--large,
-                                          $login-btn-width: $cuba-login-btn-width--large);
+    @include cuba-flat-login-window-size-style($login-form-width          : $cuba-login-form-width--large,
+                                               $login-panel-padding       : $cuba-login-panel-padding--large,
+                                               $login-logo-height         : $cuba-login-logo-height--large,
+                                               $login-caption-font-size   : $cuba-login-caption-font-size--large,
+                                               $login-caption-font-weight : $cuba-login-caption-font-weight--large,
+                                               $login-username-height     : $cuba-login-username-height--large,
+                                               $login-password-height     : $cuba-login-password-height--large,
+                                               $login-btn-font-weight     : $cuba-login-btn-font-weight--large,
+                                               $login-btn-height          : $cuba-login-btn-height--large,
+                                               $login-btn-width           : $cuba-login-btn-width--large);
   }
 }
 
 @mixin cuba-flat-login-window-size-style($login-form-width           : $cuba-login-form-width,
-                                    $login-panel-padding        : $cuba-login-panel-padding,
+                                         $login-panel-padding        : $cuba-login-panel-padding,
 
-                                    $login-logo-height          : $cuba-login-logo-height,
+                                         $login-logo-height          : $cuba-login-logo-height,
 
-                                    $login-caption-font-size    : $cuba-login-caption-font-size,
-                                    $login-caption-font-weight  : $cuba-login-caption-font-weight,
+                                         $login-caption-font-size    : $cuba-login-caption-font-size,
+                                         $login-caption-font-weight  : $cuba-login-caption-font-weight,
 
-                                    $login-username-height      : $cuba-login-username-height,
-                                    $login-password-height      : $cuba-login-password-height,
+                                         $login-username-height      : $cuba-login-username-height,
+                                         $login-password-height      : $cuba-login-password-height,
 
-                                    $login-btn-font-weight      : $cuba-login-btn-font-weight,
-                                    $login-btn-height           : $cuba-login-btn-height,
-                                    $login-btn-width            : $cuba-login-btn-width) {
+                                         $login-btn-font-weight      : $cuba-login-btn-font-weight,
+                                         $login-btn-height           : $cuba-login-btn-height,
+                                         $login-btn-width            : $cuba-login-btn-width) {
   .c-login-form {
     width: $login-form-width;
   }
