@@ -67,6 +67,29 @@ $v-table-cell-padding-horizontal: 16px;
 $cuba-table-highlight-hover-row: true;
 $cuba-table-header-font-weight: 600;
 
+$v-grid-border: $v-grid-border-size solid var(--read-only-border-color);
+
+$v-grid-cell-padding-horizontal: $v-table-cell-padding-horizontal;
+
+$v-grid-row-height: $v-unit-size;
+$v-grid-row-height--small: $v-unit-size--small;
+$v-grid-row-height--large: $v-unit-size--large;
+
+$v-grid-header-row-height: round($v-grid-row-height * 1.5);
+$v-grid-header-font-size: $v-font-size;
+$v-grid-header-font-size--small: $v-font-size--small;
+$v-grid-header-font-size--large: $v-font-size--large;
+
+$v-grid-footer-row-height: $v-grid-row-height;
+
+$v-grid-details-border-top: $v-grid-border;
+$v-grid-details-border-top-stripe: $v-grid-border;
+$v-grid-details-border-bottom: $v-grid-border;
+$v-grid-details-border-bottom-stripe: $v-grid-border;
+
+$cuba-datagrid-header-font-weight: 600;
+$cuba-datagrid-highlight-hover-row: true;
+
 $v-focus-style: none;
 $v-error-focus-style: none;
 //$v-error-indicator-use-bg: false;
@@ -125,7 +148,7 @@ $v-window-animations-enabled: true !default;
  * Whether to show or not separate * element for required fields.
  * @group field
  */
-$v-show-required-indicators: false !default;
+$v-show-required-indicators: true;
 /**
  * Enables custom colored scrollbars for webkit/blink browsers.
  * @group scrollbar

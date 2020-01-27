@@ -15,9 +15,9 @@
  *
  */
 
-@mixin flat-contextmenu($primary-stylename: v-contextmenu) {
+@mixin flat-contextmenu($primary-stylename: v-contextmenu, $item-stylename: gwt-MenuItem) {
   .#{$primary-stylename} {
-    @include cuba-flat-selection-overlay-style();
+    @include cuba-flat-selection-overlay-style($item-stylename: $item-stylename);
   }
 
   &.small .#{$primary-stylename} {
@@ -34,6 +34,8 @@
   @include box-shadow($v-window-shadow);
 
   color: var(--text-medium-color);
+  border-radius: $v-overlay-border-radius;
+  overflow: hidden;
 
   table {
     border-radius: $v-overlay-border-radius;
@@ -62,12 +64,20 @@
     $padding-width: ceil($item-height/3);
     padding: 0 $padding-width 0 $padding-width;
   }
+
+  &:before {
+    display: none;
+  }
 }
 
 @mixin cuba-flat-selection-item-selected-style() {
   background: var(--primary-color);
   color: var(--primary-text-color);
   text-shadow: none;
+
+  &:active {
+    background: var(--primary-active-color);
+  }
 }
 
 @mixin cuba-flat-selection-overlay-size-style($item-height    : $v-selection-item-height,
@@ -85,4 +95,20 @@
   .#{$primary-stylename} {
     @include box-shadow($v-window-shadow);
   }
+}
+
+@mixin flat-vaadin-contextmenu-addon($primary-stylename: v-menubar) {
+  @include flat-contextmenu($primary-stylename: #{$primary-stylename}-popup, $item-stylename: #{$primary-stylename}-menuitem);
+
+  .#{$primary-stylename}-popup {
+    .#{$primary-stylename}-submenu {
+      border-radius: $v-overlay-border-radius;
+      overflow: hidden;
+    }
+
+    .#{$primary-stylename}-menuitem-selected:active {
+      @include opacity(1);
+    }
+  }
+
 }

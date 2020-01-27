@@ -1,0 +1,23 @@
+@import "../datagrid/datagrid";
+
+@mixin flat-treedatagrid($primary-stylename: v-treegrid) {
+  @include flat-datagrid($primary-stylename);
+
+  .#{$primary-stylename} {
+    @include cuba-flat-treegrid-style($primary-stylename: $primary-stylename);
+  }
+}
+
+@mixin cuba-flat-treegrid-style($primary-stylename: v-treegrid) {
+  .#{$primary-stylename}-row-focused {
+    &:before {
+      border-color: var(--primary-color);
+    }
+
+    &.#{$primary-stylename}-row-selected {
+      &:before {
+        border-color: var(--primary-disabled-color);
+      }
+    }
+  }
+}
