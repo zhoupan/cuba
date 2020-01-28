@@ -752,7 +752,7 @@ configure(webModule) {
     }
 
     task buildScssThemes(type: CubaWebScssThemeCreation) {
-        themes = ['halo', 'hover', 'havana']
+        themes = ['halo', 'hover', 'havana', 'flat']
 //        compress = true
 //        sprites = true
 //        cleanup = true
@@ -799,6 +799,8 @@ configure(webModule) {
         into "${cuba.tomcat.dir}/webapps/cuba/VAADIN/themes/havana"
         exclude '**/web.xml'
     }
+
+    // TODO: gg, tasks for the new theme
 
     def vaadinThemesDir = "$buildDir/vaadin-themes"
     task unpackVaadinThemes() {

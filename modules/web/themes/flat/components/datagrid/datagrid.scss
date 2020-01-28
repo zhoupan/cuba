@@ -1,0 +1,226 @@
+/*!
+ * Copyright (c) 2008-2016 Haulmont.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+@mixin flat-datagrid($primary-stylename: v-grid) {
+  .#{$primary-stylename} {
+    @include cuba-flat-grid-style($primary-stylename: $primary-stylename);
+  }
+
+  .#{$primary-stylename}-sidebar.v-contextmenu {
+    &.open {
+      background: var(--read-only-color);
+
+      .#{$primary-stylename}-sidebar-content {
+        margin: 0;
+        padding: 0;
+      }
+    }
+
+    table {
+      border-radius: 0;
+    }
+  }
+}
+
+@mixin cuba-flat-grid-style($primary-stylename: v-grid) {
+  @include cuba-flat-grid-size-style($primary-stylename: $primary-stylename);
+
+  // TODO: gg, replace?
+  $background-color: $v-table-background-color or valo-table-background-color();
+  $header-background-color: $background-color;
+
+  background-color: $background-color;
+  color: var(--text-medium-color);
+
+  // Rows
+
+  .#{$primary-stylename}-row-stripe > td {
+    background-color: var(--read-only-color);
+  }
+
+  // Header
+
+  .#{$primary-stylename}-header {
+    color: var(--text-color);
+  }
+
+  .#{$primary-stylename}-header .#{$primary-stylename}-cell,
+  .#{$primary-stylename}-footer .#{$primary-stylename}-cell {
+    background: $header-background-color;
+    text-shadow: none;
+  }
+
+  .#{$primary-stylename}-header-deco,
+  .#{$primary-stylename}-footer-deco {
+    background: $header-background-color;
+  }
+
+  // Column drag and drop elements
+
+  .header-drag-table .#{$primary-stylename}-header > .#{$primary-stylename}-drop-marker {
+    background-color: var(--primary-color);
+  }
+
+  // Sidebar
+
+  .#{$primary-stylename}-sidebar.v-contextmenu {
+    background: $header-background-color;
+
+    &.open {
+      background: var(--read-only-color);
+    }
+
+    &.closed {
+      background: $header-background-color;
+    }
+  }
+
+  // Selected
+
+  .#{$primary-stylename}-row-selected {
+    > .#{$primary-stylename}-cell {
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+      text-shadow: none;
+      border-color: var(--primary-hover-color);
+
+      .v-link,
+      .v-button-link,
+      .boolean-value:before {
+        color: var(--primary-text-color);
+      }
+
+      .v-button-link:focus,
+      .v-button:focus:after {
+        border-color: var(--primary-text-color);
+      }
+    }
+
+    > .#{$primary-stylename}-cell-focused:before {
+      border-color: var(--primary-disabled-color);
+    }
+  }
+
+  @if $cuba-datagrid-highlight-hover-row {
+    .#{$primary-stylename}-body .#{$primary-stylename}-row:hover > td {
+      background-color: var(--primary-disabled-color);
+      color: var(--text-medium-color);
+    }
+
+    .#{$primary-stylename}-body .#{$primary-stylename}-row-selected:hover > td {
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+    }
+  }
+
+  // Focused cell style (common for all cells)
+
+  .#{$primary-stylename}-cell-focused:before {
+    border-color: var(--primary-color);
+  }
+
+  // Drag and drop
+
+  .#{$primary-stylename}-row-drag-top:before,
+  .#{$primary-stylename}-row-drag-bottom:after {
+    background: var(--primary-color);
+  }
+
+  .#{$primary-stylename}-body-drag-top,
+  .#{$primary-stylename}-row-drag-center {
+    &:after {
+      border: flat-border($color: --primary-color, $strength: 2px);
+    }
+  }
+
+  .#{$primary-stylename}-row-selected {
+    &.#{$primary-stylename}-row-drag-center:after {
+      border-color: var(--primary-hover-color);
+    }
+
+    &.#{$primary-stylename}-row-drag-top:before,
+    &.#{$primary-stylename}-row-drag-bottom:after {
+      border-color: var(--primary-hover-color);
+    }
+  }
+
+  // Editor
+
+  .#{$primary-stylename}-editor {
+    border-color: var(--primary-color);
+  }
+
+  .#{$primary-stylename}-editor-footer {
+    background: var(--read-only-color);
+  }
+
+  .#{$primary-stylename}-editor-save,
+  .#{$primary-stylename}-editor-cancel {
+    // TODO: gg, use flat-link-style
+    color: var(--primary-color);
+  }
+
+  .#{$primary-stylename}-editor-cells > div {
+    // TODO: gg, style other components
+    .v-button.c-pickerfield-button {
+      border-left: flat-border($color: --read-only-border-color);
+    }
+  }
+
+  // Aggregation
+
+  .#{$primary-stylename}-header .#{$primary-stylename}-row.c-aggregation-row > th,
+  .#{$primary-stylename}-footer .#{$primary-stylename}-row.c-aggregation-row > td {
+    background: $cuba-datagrid-aggregation-background-color;
+  }
+
+  // Decorative elements
+
+  .#{$primary-stylename}-horizontal-scrollbar-deco {
+    background: $header-background-color;
+  }
+
+  .#{$primary-stylename}-cell .boolean-value {
+    &:before {
+      color: var(--text-medium-color);
+      font-size: $v-font-size;
+    }
+  }
+
+  // Spacer (Details)
+
+  .#{$primary-stylename}-spacer-deco {
+    background-color: var(--primary-color);
+  }
+
+  .#{$primary-stylename}-spacer.stripe > td {
+    background-color: var(--read-only-color);
+  }
+}
+
+@mixin cuba-flat-grid-size-style($primary-stylename : v-grid,
+                                 $row-height        : $v-grid-row-height,
+                                 $header-row-height : $v-grid-header-row-height,
+                                 $footer-row-height : $v-grid-footer-row-height,
+                                 $font-size         : $v-font-size) {
+  .#{$primary-stylename}-column-header-content {
+    line-height: $header-row-height;
+  }
+
+  .#{$primary-stylename}-cell .boolean-value:before {
+    font-size: $font-size;
+  }
+}
