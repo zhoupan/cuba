@@ -22,8 +22,22 @@ import com.vaadin.shared.ui.Connect;
 
 @Connect(value = CubaCalendar.class, loadStyle = Connect.LoadStyle.LAZY)
 public class CubaCalendarConnector extends CalendarConnector {
+
+    public static final String WEEK_DAY_CLICK = "weekDayClick";
+
     @Override
     public CubaCalendarWidget getWidget() {
         return (CubaCalendarWidget) super.getWidget();
+    }
+
+    @Override
+    protected void registerListeners() {
+        super.registerListeners();
+
+        getWidget().setWeekDayClickListener(weekDayClickEvent -> {
+            if (!getWidget().isDisabled() && hasEventListener(WEEK_DAY_CLICK)) {
+                // todo invoke rpc
+            }
+        });
     }
 }

@@ -16,11 +16,26 @@
 
 package com.haulmont.cuba.web.widgets;
 
+import com.haulmont.cuba.web.widgets.client.calendar.CubaCalendarServerRpc;
 import com.vaadin.v7.ui.Calendar;
+import com.vaadin.v7.ui.components.calendar.event.CalendarEventProvider;
+
+import java.util.Date;
 
 public class CubaCalendar extends Calendar {
     protected String[] dayNamesShort;
     protected String[] monthNamesShort;
+
+    public CubaCalendar(String caption, CalendarEventProvider eventProvider) {
+        super(caption, eventProvider);
+
+        registerRpc(new CubaCalendarServerRpc() {
+            @Override
+            public void weekDayClick(Date dayDate, Date from, Date to) {
+                // todo fire event
+            }
+        });
+    }
 
     @Override
     public String[] getDayNamesShort() {

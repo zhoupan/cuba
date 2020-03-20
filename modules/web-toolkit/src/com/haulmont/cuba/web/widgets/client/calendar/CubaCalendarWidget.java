@@ -17,12 +17,17 @@
 package com.haulmont.cuba.web.widgets.client.calendar;
 
 import com.haulmont.cuba.web.widgets.client.calendar.schedule.CubaSimpleDayCell;
+import com.haulmont.cuba.web.widgets.client.calendar.schedule.CubaWeekGrid;
+import com.haulmont.cuba.web.widgets.client.calendar.schedule.WeekDayClickEvent;
 import com.vaadin.v7.client.ui.VCalendar;
 import com.vaadin.v7.client.ui.calendar.schedule.SimpleDayCell;
 
 import java.util.Date;
+import java.util.function.Consumer;
 
 public class CubaCalendarWidget extends VCalendar {
+
+    protected Consumer<WeekDayClickEvent> weekDayClickListener;
 
     /*
      * We must also handle the special case when the event lasts exactly for 24
@@ -40,5 +45,20 @@ public class CubaCalendarWidget extends VCalendar {
     @Override
     protected SimpleDayCell createSimpleDayCell(int y, int x) {
         return new CubaSimpleDayCell(this, y, x);
+    }
+
+    public Consumer<WeekDayClickEvent> getWeekDayClickListener() {
+        return weekDayClickListener;
+    }
+
+    public void setWeekDayClickListener(Consumer<WeekDayClickEvent> weekDayClickListener) {
+        this.weekDayClickListener = weekDayClickListener;
+    }
+
+    @Override
+    protected void createWeekGrid() {
+        if (weekGrid == null) {
+            weekGrid = new CubaWeekGrid(this, is24HFormat());
+        }
     }
 }
