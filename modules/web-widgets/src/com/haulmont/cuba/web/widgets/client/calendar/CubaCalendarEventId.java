@@ -16,11 +16,9 @@
 
 package com.haulmont.cuba.web.widgets.client.calendar;
 
-import com.vaadin.shared.communication.ServerRpc;
+import java.io.Serializable;
 
-import java.util.Date;
+public class CubaCalendarEventId implements Serializable {
 
-public interface CubaCalendarServerRpc extends ServerRpc {
-
-    void dayClick(Date date, Date from, Date to);
+    public static final String DAYCLICK = "dayClick";
 }

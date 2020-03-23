@@ -17,9 +17,8 @@
 package com.haulmont.cuba.web.widgets.client.calendar.schedule;
 
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.MouseDownEvent;
 import com.google.gwt.event.dom.client.MouseUpEvent;
+import com.google.gwt.user.client.Event;
 import com.haulmont.cuba.web.widgets.client.calendar.CubaCalendarWidget;
 import com.vaadin.v7.client.ui.calendar.schedule.DateCell;
 import com.vaadin.v7.client.ui.calendar.schedule.WeekGrid;
@@ -30,75 +29,82 @@ public class CubaDateCell extends DateCell {
 
     public static final String SLOT_NUMBER_STYLENAME = "c-date-number";
 
-    protected boolean mouseDown = false;
+    protected boolean rangeSelect = false;
 
     public CubaDateCell(WeekGrid parent, Date date) {
         super(parent, date);
 
+        // add style with number for checking in events which slot was clicked
         for (int i = 0; i < slots.size(); i++) {
             Element slotElement = slots.get(i).getElement();
             slotElement.addClassName(SLOT_NUMBER_STYLENAME + "-" + i);
         }
-    }
 
-    @Override
-    public void onMouseDown(MouseDownEvent event) {
-        super.onMouseDown(event);
-
-        if (event.getNativeButton() == NativeEvent.BUTTON_LEFT) {
-            mouseDown = true;
-        }
+        sinkEvents(Event.ONCLICK);
     }
 
     @Override
     public void onMouseUp(MouseUpEvent event) {
-        super.onMouseUp(event);
+        // consider that rangeSelect will be fired
+        rangeSelect = true;
 
-        mouseDown = false;
+        super.onMouseUp(event);
     }
 
-    /**
-     * CAUTION! This is not actually Click event. It is invoked from MouseUpEvent when calendar event move is not
-     * handled.
-     *
-     * @param event mouse up event
-     */
     @Override
-    protected void handleClick(MouseUpEvent event) {
-        super.handleClick(event);
-        // if mouse down was not in calendar surface
-        if (!mouseDown) {
-            return;
-        }
+    public void cancelRangeSelect() {
+        super.cancelRangeSelect();
 
-        Element target = Element.as(event.getNativeEvent().getEventTarget());
-        String targetSlotNumber = getSlotNumberStyle(target);
+        // rangeSelect was cancelled
+        rangeSelect = false;
+    }
 
-        for (DateCellSlot slot : slots) {
-            String className = slot.getElement().getClassName();
+    @Override
+    public void onBrowserEvent(Event event) {
+        super.onBrowserEvent(event);
 
-            if (className.contains(targetSlotNumber)) {
-                CubaCalendarWidget calendar = (CubaCalendarWidget) weekgrid.getCalendar();
-                if (calendar.getWeekDayClickListener() != null) {
-                    calendar.getWeekDayClickListener().accept(
-                            new WeekDayClickEvent(slot.getFrom(), slot.getTo(), getDate())
-                    );
+        // ONCLICK is invoked after mouseDown and mouseUp events, so we need
+        // to check that rangeSelect event was not fired
+        if (event.getTypeInt() == Event.ONCLICK && !rangeSelect) {
+            Element target = Element.as(event.getEventTarget());
+            String targetSlotNumber = getSlotNumberStyle(target);
+
+            for (DateCellSlot slot : slots) {
+                String className = slot.getElement().getClassName();
+
+                if (containsSlotNumber(className, targetSlotNumber)) {
+                    CubaCalendarWidget calendar = (CubaCalendarWidget) weekgrid.getCalendar();
+                    if (calendar.getDayClickListener() != null) {
+                        calendar.getDayClickListener().accept(
+                                new DayClickEvent(getDate(), slot.getFrom(), slot.getTo()));
+                    }
+                    break;
                 }
-                break;
             }
         }
     }
 
-    public String getSlotNumberStyle(Element element) {
+    protected String getSlotNumberStyle(Element element) {
         for (int i = 0; i < slots.size(); i++) {
             String className = element.getClassName();
             String slotNumberStyle = SLOT_NUMBER_STYLENAME + "-" + i;
 
-            if (className.contains(slotNumberStyle)) {
+            if (containsSlotNumber(className, slotNumberStyle)) {
                 return slotNumberStyle;
             }
         }
 
         return null;
+    }
+
+    protected boolean containsSlotNumber(String className, String slotNumberStyle) {
+        String[] classes = className.split(" ");
+        for (String selector : classes) {
+            if (selector.equals(slotNumberStyle)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

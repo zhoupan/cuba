@@ -16,23 +16,27 @@
 
 package com.haulmont.cuba.web.widgets;
 
+import com.haulmont.cuba.web.widgets.client.calendar.CubaCalendarEventId;
 import com.haulmont.cuba.web.widgets.client.calendar.CubaCalendarServerRpc;
+import com.vaadin.util.ReflectTools;
 import com.vaadin.v7.ui.Calendar;
-import com.vaadin.v7.ui.components.calendar.event.CalendarEventProvider;
 
+import java.lang.reflect.Method;
 import java.util.Date;
+import java.util.EventListener;
+import java.util.EventObject;
 
 public class CubaCalendar extends Calendar {
     protected String[] dayNamesShort;
     protected String[] monthNamesShort;
 
-    public CubaCalendar(String caption, CalendarEventProvider eventProvider) {
-        super(caption, eventProvider);
+    public CubaCalendar() {
+        super();
 
         registerRpc(new CubaCalendarServerRpc() {
             @Override
-            public void weekDayClick(Date dayDate, Date from, Date to) {
-                // todo fire event
+            public void dayClick(Date date, Date from, Date to) {
+                fireDayClickEvent(date, from, to);
             }
         });
     }
@@ -65,5 +69,51 @@ public class CubaCalendar extends Calendar {
 
     public int getFirstDayOfWeek() {
         return currentCalendar.getFirstDayOfWeek();
+    }
+
+    public void setDayClickHandler(DayClickHandler dayClickHandler) {
+        setHandler(CubaCalendarEventId.DAYCLICK,
+                CubaCalendarDayClickEvent.class,
+                dayClickHandler,
+                DayClickHandler.method);
+    }
+
+    protected void fireDayClickEvent(Date date, Date from, Date to) {
+        fireEvent(new CubaCalendarDayClickEvent(this, date, from, to));
+    }
+
+    public interface DayClickHandler extends EventListener {
+
+        Method method = ReflectTools.findMethod(
+                DayClickHandler.class, "onDayClick", CubaCalendarDayClickEvent.class);
+
+        void onDayClick(CubaCalendarDayClickEvent event);
+    }
+
+    public static class CubaCalendarDayClickEvent extends EventObject {
+
+        protected Date date;
+        protected Date from;
+        protected Date to;
+
+        public CubaCalendarDayClickEvent(Calendar calendar, Date date, Date from, Date to) {
+            super(calendar);
+
+            this.date = date;
+            this.from = from;
+            this.to = to;
+        }
+
+        public Date getDate() {
+            return date;
+        }
+
+        public Date getFrom() {
+            return from;
+        }
+
+        public Date getTo() {
+            return to;
+        }
     }
 }

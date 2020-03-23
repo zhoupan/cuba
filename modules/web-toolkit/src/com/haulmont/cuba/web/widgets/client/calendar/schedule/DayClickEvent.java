@@ -18,13 +18,13 @@ package com.haulmont.cuba.web.widgets.client.calendar.schedule;
 
 import java.util.Date;
 
-public class WeekDayClickEvent {
+public class DayClickEvent {
 
     protected final Date date;
     protected final Date from;
     protected final Date to;
 
-    public WeekDayClickEvent(Date date, Date from, Date to) {
+    public DayClickEvent(Date date, Date from, Date to) {
         this.date = date;
         this.from = from;
         this.to = to;
