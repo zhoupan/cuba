@@ -35,8 +35,8 @@ public class CubaCalendar extends Calendar {
 
         registerRpc(new CubaCalendarServerRpc() {
             @Override
-            public void dayClick(Date date, Date from, Date to) {
-                fireDayClickEvent(date, from, to);
+            public void dayClick(Date date, Date dateTime) {
+                fireDayClickEvent(date, dateTime);
             }
         });
     }
@@ -78,8 +78,8 @@ public class CubaCalendar extends Calendar {
                 DayClickHandler.method);
     }
 
-    protected void fireDayClickEvent(Date date, Date from, Date to) {
-        fireEvent(new CubaCalendarDayClickEvent(this, date, from, to));
+    protected void fireDayClickEvent(Date date, Date dateTime) {
+        fireEvent(new CubaCalendarDayClickEvent(this, date, dateTime));
     }
 
     public interface DayClickHandler extends EventListener {
@@ -93,27 +93,21 @@ public class CubaCalendar extends Calendar {
     public static class CubaCalendarDayClickEvent extends EventObject {
 
         protected Date date;
-        protected Date from;
-        protected Date to;
+        protected Date dateTime;
 
-        public CubaCalendarDayClickEvent(Calendar calendar, Date date, Date from, Date to) {
+        public CubaCalendarDayClickEvent(Calendar calendar, Date date, Date dateTime) {
             super(calendar);
 
             this.date = date;
-            this.from = from;
-            this.to = to;
+            this.dateTime = dateTime;
         }
 
         public Date getDate() {
             return date;
         }
 
-        public Date getFrom() {
-            return from;
-        }
-
-        public Date getTo() {
-            return to;
+        public Date getDateTime() {
+            return dateTime;
         }
     }
 }

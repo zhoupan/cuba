@@ -75,8 +75,7 @@ public class CubaDateCell extends DateCell {
                 if (containsSlotNumber(className, targetSlotNumber)) {
                     CubaCalendarWidget calendar = (CubaCalendarWidget) weekgrid.getCalendar();
                     if (calendar.getDayClickListener() != null) {
-                        calendar.getDayClickListener().accept(
-                                new DayClickEvent(getDate(), slot.getFrom(), slot.getTo()));
+                        calendar.getDayClickListener().accept(new DayClickEvent(getDate(), slot.getFrom()));
                     }
                     break;
                 }

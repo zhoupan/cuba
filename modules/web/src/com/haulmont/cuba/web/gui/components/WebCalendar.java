@@ -600,8 +600,7 @@ public class WebCalendar<V> extends WebAbstractComponent<CubaCalendar>
         CalendarDayClickEvent<V> dayClickEvent = new CalendarDayClickEvent<>(
                 this,
                 convertToModel(event.getDate()),
-                convertToModel(event.getFrom()),
-                convertToModel(event.getTo()));
+                convertToModel(event.getDateTime()));
 
         getEventHub().publish(CalendarDayClickEvent.class, dayClickEvent);
     }

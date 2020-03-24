@@ -21,24 +21,18 @@ import java.util.Date;
 public class DayClickEvent {
 
     protected final Date date;
-    protected final Date from;
-    protected final Date to;
+    protected final Date dateTime;
 
-    public DayClickEvent(Date date, Date from, Date to) {
+    public DayClickEvent(Date date, Date dateTime) {
         this.date = date;
-        this.from = from;
-        this.to = to;
+        this.dateTime = dateTime;
     }
 
     public Date getDate() {
         return date;
     }
 
-    public Date getFrom() {
-        return from;
-    }
-
-    public Date getTo() {
-        return to;
+    public Date getDateTime() {
+        return dateTime;
     }
 }

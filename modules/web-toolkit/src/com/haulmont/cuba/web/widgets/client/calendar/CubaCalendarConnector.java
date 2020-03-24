@@ -36,8 +36,7 @@ public class CubaCalendarConnector extends CalendarConnector {
             if (!getWidget().isDisabled() && hasEventListener(CubaCalendarEventId.DAYCLICK)) {
                 getRpcProxy(CubaCalendarServerRpc.class).dayClick(
                         dayClickEvent.getDate(),
-                        dayClickEvent.getFrom(),
-                        dayClickEvent.getTo()
+                        dayClickEvent.getDateTime()
                 );
             }
         });
