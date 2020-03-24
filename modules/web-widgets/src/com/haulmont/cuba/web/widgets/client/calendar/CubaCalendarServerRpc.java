@@ -22,5 +22,5 @@ import java.util.Date;
 
 public interface CubaCalendarServerRpc extends ServerRpc {
 
-    void dayClick(Date date, Date dateTime);
+    void dayClick(Date date);
 }

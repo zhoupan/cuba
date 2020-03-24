@@ -32,12 +32,9 @@ public class CubaCalendarConnector extends CalendarConnector {
     protected void registerListeners() {
         super.registerListeners();
 
-        getWidget().setDayClickListener(dayClickEvent -> {
+        getWidget().setDayClickListener(date -> {
             if (!getWidget().isDisabled() && hasEventListener(CubaCalendarEventId.DAYCLICK)) {
-                getRpcProxy(CubaCalendarServerRpc.class).dayClick(
-                        dayClickEvent.getDate(),
-                        dayClickEvent.getDateTime()
-                );
+                getRpcProxy(CubaCalendarServerRpc.class).dayClick(date);
             }
         });
     }

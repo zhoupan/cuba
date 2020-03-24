@@ -597,10 +597,8 @@ public class WebCalendar<V> extends WebAbstractComponent<CubaCalendar>
     }
 
     protected void onDayClick(CubaCalendar.CubaCalendarDayClickEvent event) {
-        CalendarDayClickEvent<V> dayClickEvent = new CalendarDayClickEvent<>(
-                this,
-                convertToModel(event.getDate()),
-                convertToModel(event.getDateTime()));
+        CalendarDayClickEvent<V> dayClickEvent =
+                new CalendarDayClickEvent<>(this, convertToModel(event.getDate()));
 
         getEventHub().publish(CalendarDayClickEvent.class, dayClickEvent);
     }

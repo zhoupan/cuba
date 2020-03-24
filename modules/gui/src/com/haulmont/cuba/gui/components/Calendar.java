@@ -593,13 +593,11 @@ public interface Calendar<V> extends Component.BelongToFrame, Component.HasCapti
     class CalendarDayClickEvent<V> extends EventObject {
 
         protected V date;
-        protected V dateTime;
 
-        public CalendarDayClickEvent(Calendar<V> source, V date, V dateTime) {
+        public CalendarDayClickEvent(Calendar<V> source, V date) {
             super(source);
 
             this.date = date;
-            this.dateTime = dateTime;
         }
 
         @SuppressWarnings("unchecked")
@@ -609,18 +607,13 @@ public interface Calendar<V> extends Component.BelongToFrame, Component.HasCapti
         }
 
         /**
-         * @return day which user clicked on
+         * If calendar value type supports time (e.g. {@link java.util.Date}) date will contain time value for day and
+         * week calendar view. Calendar with month view does not provide time value.
+         *
+         * @return date which user clicked on
          */
         public V getDate() {
             return date;
-        }
-
-        /**
-         * @return date with time which user clicked on in the day view or null if calendar has month view
-         */
-        @Nullable
-        public V getDateTime() {
-            return dateTime;
         }
     }
 }
