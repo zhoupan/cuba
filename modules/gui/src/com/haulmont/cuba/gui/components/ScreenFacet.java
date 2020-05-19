@@ -40,8 +40,9 @@ import java.util.function.Supplier;
         caption = "Screen",
         description = "Prepares and shows screens",
         defaultProperty = "screenId",
-        category = "Non-visual",
-        icon = "icon/screen.svg"
+        category = "Facets",
+        icon = "icon/screen.svg",
+        documentationURL = "https://doc.cuba-platform.com/manual-%VERSION%/gui_ScreenFacet.html"
 )
 @StudioProperties(
         properties = {
@@ -68,7 +69,7 @@ public interface ScreenFacet<S extends Screen> extends Facet, BeanLocatorAware {
      *
      * @param screenClass screen class
      */
-    @StudioProperty(type = PropertyType.JAVA_CLASS_NAME)
+    @StudioProperty(type = PropertyType.SCREEN_CLASS_NAME, typeParameter = "S")
     void setScreenClass(Class<S> screenClass);
 
     /**
@@ -81,6 +82,7 @@ public interface ScreenFacet<S extends Screen> extends Facet, BeanLocatorAware {
      *
      * @param launchMode launch mode
      */
+    @StudioProperty(name = "openMode", type = PropertyType.SCREEN_OPEN_MODE, defaultValue = "NEW_TAB")
     void setLaunchMode(LaunchMode launchMode);
 
     /**
@@ -122,7 +124,8 @@ public interface ScreenFacet<S extends Screen> extends Facet, BeanLocatorAware {
      *
      * @param actionId action id
      */
-    @StudioProperty(type = PropertyType.COMPONENT_REF)
+    @StudioProperty(name = "onAction", type = PropertyType.COMPONENT_REF,
+            options = "com.haulmont.cuba.gui.components.Action")
     void setActionTarget(String actionId);
 
     /**
@@ -135,7 +138,8 @@ public interface ScreenFacet<S extends Screen> extends Facet, BeanLocatorAware {
      *
      * @param buttonId button id
      */
-    @StudioProperty(type = PropertyType.COMPONENT_REF)
+    @StudioProperty(name = "onButton", type = PropertyType.COMPONENT_REF,
+            options = "com.haulmont.cuba.gui.components.Button")
     void setButtonTarget(String buttonId);
 
     /**

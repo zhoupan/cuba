@@ -75,4 +75,6 @@ public @interface StudioProperty {
      * @return target XML element name
      */
     String xmlElement() default "";
+
+    String typeParameter() default "";
 }

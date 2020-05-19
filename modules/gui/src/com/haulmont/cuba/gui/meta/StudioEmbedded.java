@@ -16,24 +16,9 @@
 
 package com.haulmont.cuba.gui.meta;
 
-import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Target;
 
-/**
- * Indicates that the annotated method should be shown in Studio Screen Designer
- * as a nested group of elements of UI component, e.g. columns, actions, fields.
- */
-@Documented
-public @interface StudioElementsGroup {
-
-    /**
-     * @return target XML element name
-     */
-    String xmlElement() default "";
-
-    /**
-     * @return Component Hierarchy icon, SVG or PNG
-     */
-    String icon() default "";
-
-    String documentationURL() default "";
+@Target({ElementType.METHOD})
+public @interface StudioEmbedded {
 }

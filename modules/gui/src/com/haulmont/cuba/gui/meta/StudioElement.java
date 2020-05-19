@@ -72,4 +72,6 @@ public @interface StudioElement {
      * @return names of unsupported properties that should be hidden from Properties panel
      */
     String[] unsupportedProperties() default {};
+
+    String documentationURL() default "";
 }

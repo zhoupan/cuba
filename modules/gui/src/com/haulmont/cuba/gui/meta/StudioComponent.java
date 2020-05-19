@@ -97,4 +97,6 @@ public @interface StudioComponent {
      * @return type of container layout if {@link #canvasBehaviour()} is {@link CanvasBehaviour#CONTAINER}
      */
     ContainerType containerType() default ContainerType.VERTICAL;
+
+    String documentationURL() default "";
 }
