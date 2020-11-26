@@ -81,6 +81,7 @@ public class ScriptScanner {
                         scriptType == ScriptType.INIT ? "create-db" : "");
             }
 
+            log.info("getScript: scriptType={} moduleName={} urlPattern={} rootPath={}",new Object[]{scriptType,moduleName,urlPattern,rootPath});
             Map<String, ScriptResource> scriptResources = findResourcesByUrlPattern(resourceResolver, urlPattern, rootPath);
             if (StringUtils.isNotBlank(urlPatternWithDbmsVersion)) {
                 Map<String, ScriptResource> additionalResources = findResourcesByUrlPattern(resourceResolver, urlPatternWithDbmsVersion, rootPathWithDbmsVersion);
@@ -118,7 +119,7 @@ public class ScriptScanner {
         try {
             Resource[] resources = createAppropriateResourceResolver().getResources(dbScriptsDirectoryForSearch() + "/**/*.*");
             String dbDirPath = dbScriptDirectoryPath();
-            log.trace("DB scripts directory: {}", dbDirPath);
+            log.info("DB scripts directory: {}", dbDirPath);
             List<String> modules = Arrays.stream(resources)
                     .map(resource -> {
                         try {
@@ -140,7 +141,7 @@ public class ScriptScanner {
                         "Please check if [%s] contains DB scripts.", dbDirPath));
             }
 
-            log.trace("Found modules: {}", modules);
+            log.info("Found modules: {}", modules);
             return modules;
         } catch (IOException e) {
             throw new RuntimeException("An error occurred while detecting modules", e);

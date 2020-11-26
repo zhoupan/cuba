@@ -1,4 +1,5 @@
 /*
+
  * Copyright (c) 2008-2016 Haulmont.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -377,7 +378,7 @@ public class TestContainer extends ExternalResource implements BeforeAllCallback
 
             TestDataSourceProvider.registerDataSource(Stores.MAIN, ds);
         } catch (ClassNotFoundException | NamingException e) {
-            throw new RuntimeException("Error initializing dataSource", e);
+            throw new RuntimeException("Error initializing dataSource:"+e.getMessage(), e);
         }
     }
 

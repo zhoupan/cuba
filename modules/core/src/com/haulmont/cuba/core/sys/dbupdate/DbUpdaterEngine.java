@@ -91,7 +91,7 @@ public class DbUpdaterEngine implements DbUpdater {
 
     public List<ScriptResource> getScripts(ScriptType scriptType, @Nullable String moduleName) {
         List<ScriptResource> scripts = scriptScanner().getScripts(scriptType, moduleName);
-        log.trace("Found {} scripts for data store [{}]: {}", scriptType, storeNameToString(storeName), scripts);
+        log.info("Found {} scripts for data store [{}]: {}", scriptType, storeNameToString(storeName), scripts);
         return scripts;
     }
 
@@ -148,7 +148,7 @@ public class DbUpdaterEngine implements DbUpdater {
         QueryRunner runner = new QueryRunner(getDataSource());
         try {
             int pkLength = "mysql".equals(dbmsType) ? 255 : 300;
-            runner.update("create table SYS_DB_CHANGELOG(" +
+            runner.update("create table IF NOT EXISTS SYS_DB_CHANGELOG(" +
                     "SCRIPT_NAME varchar(" + pkLength + ") not null primary key, " +
                     "CREATE_TS " + timeStampType + " default current_timestamp, " +
                     "IS_INIT integer default 0)");
@@ -215,11 +215,10 @@ public class DbUpdaterEngine implements DbUpdater {
         List<ScriptResource> initFiles = getInitScripts();
 
         log.info("Initializing data store [{}]", storeNameToString(storeName));
-
+        log.info("changelogTableExists={}", this.changelogTableExists);
         if (!changelogTableExists) {
             createChangelogTable();
         }
-
         try {
             for (ScriptResource file : initFiles) {
                 executeScript(file);
@@ -233,26 +232,28 @@ public class DbUpdaterEngine implements DbUpdater {
     }
 
     protected void doUpdate() {
-
         log.info("Updating data store [{}] ...", storeNameToString(storeName));
-
         if (!changelogTableExists) {
             log.info("Changelog table not found for data store [{}], creating it", storeNameToString(storeName));
             createChangelogTable();
         }
-
         runRequiredInitScripts();
-
-        log.trace("Checking existing and executed update scripts for data store [{}]", storeNameToString(storeName));
+        log.info("Checking existing and executed update scripts for data store [{}]", storeNameToString(storeName));
         List<ScriptResource> files = getUpdateScripts();
         Set<String> scripts = getExecutedScripts();
+        for (String script : scripts) {
+            log.info("executedScript:{}", script);
+        }
         for (ScriptResource file : files) {
+            log.info("doUpdate:file:{}", file.getPath());
             String name = getScriptName(file);
-            if (!containsIgnoringPrefix(scripts, name)) {
-                if (executeScript(file)) {
-                    markScript(name, false);
-                }
+            //if (!containsIgnoringPrefix(scripts, name)) {
+            if (executeScript(file)) {
+                markScript(name, false);
             }
+            //} else {
+            //    log.info("doUpdate:Ignoring:{}", file.getPath());
+            //}
         }
         log.info("Data store [{}] is up-to-date", storeNameToString(storeName));
     }

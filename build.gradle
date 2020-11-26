@@ -286,6 +286,7 @@ configure(sharedLibModule) {
 
         jdbc(bom['org.postgresql:postgresql'])
         jdbc(bom['org.hsqldb:hsqldb'])
+        jdbc(bom['com.h2database:h2'])
     }
 }
 
@@ -441,10 +442,11 @@ configure(coreModule) {
 
         jdbc(bom['org.postgresql:postgresql'])
         jdbc(bom['org.hsqldb:hsqldb'])
+        jdbc(bom['com.h2database:h2'])
 
         testCompile(coreTestsModule)
         testCompile(bom['org.hsqldb:hsqldb'])
-
+        testCompile(bom['com.h2database:h2'])
         testCompile(bom['org.codehaus.groovy:groovy-json'])
 
         compile(bom['com.zaxxer:HikariCP'])
